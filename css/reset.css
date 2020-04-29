@@ -24,7 +24,7 @@ html,body,div,p,span,h1,h2,h3,h4,h5,h6,a,ul,ol,li,header,section,aside,nav,artic
   font-size:14px;
   vertical-align:baseline;
 }
-span,input,label,select,img,a,button{
+span,input,label,select,button{
   display:block;
 }
 ul,ol,li{

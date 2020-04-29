@@ -25,17 +25,21 @@
   <script src="js/banner.min.js"></script>
   <script src="js/jquery.cookie.js"></script>
   <script src="js/pop_up.min.js"></script>
+  <script src="js/login.min.js"></script>
+  <script src="js/sitemap.min.js"></script>
   <script>
     $(function(){    
       // swiper
       var swiper=new Swiper('.swiper-container');
+
+      $('.git_hub').click(function(){
+        location.href=('https://github.com/kig1078/megabox');
+      });
     });
   </script>
   <link rel="stylesheet" href="css/reset.css">
   <style>
-    .wrap{
-      position:relative;
-    }
+     /* skip menu */
     .skip{
       width:100%;
       height:50px;
@@ -57,6 +61,126 @@
     .skip a:focus{
       border:2px solid white;
     }
+    
+    /* git_hub */
+    .git_hub{
+      width:150px;
+      padding:5px 0;
+      transform:rotate(-45deg);
+      cursor:pointer;
+      position:fixed;
+      left:-30px;
+      top:30px;
+      z-index:2;
+    }
+    .git_hub p{
+      font-size:12px;
+      color:white;
+      text-align:center;
+      background-color:#fd5252;
+    }
+
+    /* login_form */
+    .login_form{
+      display:none;
+      position:fixed;
+      left:0;
+      top:0;
+      z-index:3;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.8);
+    }
+    .login_form .content{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:500px;
+      height:420px;
+      background:white;
+    }
+    .login_form .login_tit{
+      padding:12px 24px;
+      background:#330a94;
+    }
+    .login_form .login_tit p{
+      font-size:18px;
+      color:white;
+    }
+    .login_form .login_tit img{
+      cursor:pointer;
+    }
+    .login_form form{
+      padding:12px 24px;
+    }
+    .login_form form .id_pass{
+      box-sizing:border-box;
+      width:100%;
+      border:1px solid #999;
+      margin:20px 0;
+      padding:12px;
+      font-weight:bold;
+      color:#330a94;
+    }
+    .login_form form .id_pass:hover{
+      border:1px solid #333;
+    }
+    .login_form form .id_pass::placeholder{
+      font-weight:bold;
+      color:#330a94;
+    }
+    .login_form form input[type="checkbox"],.login_form form label{
+      display:inline-block;
+      margin-bottom:16px;
+    }
+    .login_form form input[type="button"]{
+      width:100%;
+      border-radius:2px;
+      padding:12px;
+      background-color:#330a94;
+      color:white;
+      font-size:20px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .login_form .login_menu{
+      padding:12px 20px;
+      display:flex;
+      flex-flow:row nowrap;
+      justify-content:center;
+    }
+    .login_form .login_menu li{
+      margin:0 10px;
+    }
+    .login_form .login_menu li a{
+      color:#999
+    }
+    .login_form .login_menu li a:hover{
+      color:#333;
+      text-decoration:underline;
+    }
+    .login_form .login_menu li:nth-child(2n){
+      width:1px;
+      background:gray;
+    }
+    .login_form .sns_login{
+      padding:12px 20px;
+      display:grid;
+      grid-template-columns:auto auto auto auto;
+      grid-column-gap:20px;
+    }
+    .login_form .sns_login li{
+      text-align:center;
+    }
+
+    .wrap{
+      position:relative;
+      width:100%;
+      max-width:2000px;
+      margin:0 auto;
+    }
+
     /* banner section */
     .banner01{
       text-align:center;
@@ -88,6 +212,8 @@
     .banner>div.active{
       display:block;
     }
+
+    /* pop_up */
     .pop_up{
       position:absolute;
       left:50%;
@@ -122,10 +248,10 @@
       font-size:12px;
       font-weight:bold;
     }
-    ol{
+    .pop_up ol{
       margin:10px 6px;
     }
-    ol,li{
+    .pop_up ol,.pop_up li{
       text-align:left;
       list-style:decimal inside;
       text-indent:5px;
@@ -156,48 +282,166 @@
       text-align:center;
       cursor:pointer;
     }
-    
-    /* git_hub */
-    .git_hub{
-      width:150px;
-      padding:5px 0;
-      background:red;
+
+
+    .header{
+      background:linear-gradient(145deg,#0c0908 10%,#161d2b 60%,#2b1f22 90%);
+      position:relative;
+    }
+    .header>.container>.content{
+      display:flex;
+      height:90px;
+      flex-flow:row nowrap;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .top_nav,.bottom_nav{
+      display:flex;
+      flex-flow:row nowrap;
+    }
+    .top_nav{
+      margin-bottom:20px;
+    }
+    .nav01 .top_nav>li{
+      margin-right:20px;
+    }
+    .nav01 .bottom_nav>li{
+      margin-right:60px;
+    }
+    .nav01 .bottom_nav>li:first-child{
+      margin-right:18px;
+    }
+    .nav02 .top_nav{
+      justify-content:flex-end;
+    }
+    .nav02 .top_nav>li{
+      margin-left:20px;
+    }
+    .nav02 .bottom_nav>li{
+      margin-right:60px;
+    }
+    .nav02 .bottom_nav>li:last-child{
+      margin-left:20px;
+    }
+    .nav02 #schedule{
+      margin-top:-7px;
+    }
+    .top_nav a{
+      color:#999;
+    }
+    .bottom_nav a{
+      color:#fff;
+      font-size:20px;
+    }
+    #sitemap_btn{
+      cursor:pointer;
+    }
+    .sitemap{
+      display:none;
+      width:100%;
+      position:absolute;
+      left:0;
+      top:90px;
+      z-index:4;
+      background-color:#666;
+    }
+    .sitemap .content{
+      padding:50px 0;
+    }
+    .sitemap_menu{
+      display:grid;
+      grid-template-columns: 15.15151515151515% 15.15151515151515% 15.15151515151515% 15.15151515151515% 15.15151515151515% 15.15151515151515%;
+      grid-column-gap:20px;
+      grid-row-gap:80px
+    }
+    .sitemap_menu>li:nth-child(6){
+      grid-column:6;
+      grid-row:1/3;
+    }
+    .sitemap h2{
+      font-size:24px;
+      font-weight:normal;
+      margin-bottom:20px;
+      color:white;
+    }
+    .sitemap_menu>li>ul>li{
+      margin:20px 0;
+      text-align:center;
+    }
+    .sitemap_menu>li>ul>li>a{
+      font-size:16px;
+      color:#fff;
+      font-weight:100;
+    }
+    .sitemap_menu>li>ul>li>a:hover{
+      text-decoration:underline;
+      color:#330a94;
+    }
+    .sitemap_tit{
+      border-top:1px solid #999;
+      border-bottom:1px solid #999;
+      padding:12px 0;
+      font-weight:bold;
+      color:white;
+    }
+
+    .sub_nav{
+      display:none;
+    }
+    .section{
+      height:1000px;
+      background:rgba(255,0,0,0.2);
+    }
+    .footer{
+      height:300px;
+      background:rgba(0,255,0,0.2);
+    }
+    .container{
+      width:1100px;
+      margin:0 auto;
     }
   </style>
 
   <title>라이프시어터, 메가박스</title>
 </head>
 <body>
+  <!-- skip menu -->
   <div class="skip">
     <a href="#section">본문 바로가기</a>
     <a href="#footer">푸터 바로가기</a>
   </div>
+  <!-- github -->
   <div class="git_hub">
     <p>github로 오세요</p>
   </div>
-  <div class="pop_up">
-    <h3>예방 수칙 안내</h3>
-    <p>코로나 바이러스 감염증 - 19 예방을 위한<br>
-      <strong>국가 지침 발표</strong><br>
-      중앙방역대책본부 · 중앙사고수습본부
-    </p>
-    <hr>
-    <p>다중이용시설을 대상으로 사업장 집중관리 지침이 적용됩니다.</p>
-    <ol>
-      <li>극장 내 직원을 통해 발열 체크와 이용자 명부를 작성해주시기 바랍니다.</li>
-      <li>상영관 입장 시 마스크를 착용해주시기 바랍니다.</li>
-      <li>마스크 미착용 시 영화관람에 제한이 될 수 있습니다.</li>
-    </ol>
-    <p>메가박스는 안전한 관람 환경을 제공하기 위해 항상 노력하겠습니다.<br>
-      감사합니다.
-    </p>
-    <form>
-      <input type="checkbox" id="day3">
-      <label for="day3">3일간 보지 않기</label>
-      <input type="checkbox" id="allday">
-      <label for="allday">다시 보지 않기</label>
-      <input id="close_btn" type="button" value="X">
-    </form>
+  <!-- login form -->
+  <div class="login_form">
+    <div class="content">
+      <div class="login_tit clear_fix">
+        <p class="fl_left">로그인</p>
+        <img class="fl_right" src="images/close.png" alt="close" id="close">
+      </div>
+      <form>
+        <input class="id_pass" type="text" placeholder="아이디">
+        <input class="id_pass" type="password" placeholder="비밀번호">
+        <input type="checkbox" id="save_id">
+        <label for="save_id">아이디 저장</label>
+        <input type="button" value="로그인">
+      </form>
+      <ul class="login_menu">
+        <li><a href="#">ID/PW 찾기</a></li>
+        <li></li>
+        <li><a href="#">회원가입</a></li>
+        <li></li>
+        <li><a href="#">비회원 예매확인</a></li>
+      </ul>
+      <ul class="sns_login">
+        <li><a href="#"><img src="images/facebook_c.png" alt="facebook"></a></li>
+        <li><a href="#"><img src="images/naver_c.png" alt="naver"></a></li>
+        <li><a href="#"><img src="images/kakao_c.png" alt="kakao"></a></li>
+        <li><a href="#"><img src="images/payco_c.png" alt="payco"></a></li>
+      </ul>
+    </div>
   </div>
   <div class="wrap">
     <div class="banner">
@@ -210,6 +454,198 @@
         <div class="close">X</div>
       </div>
     </div>
+    <div class="pop_up">
+      <h3>예방 수칙 안내</h3>
+      <p>코로나 바이러스 감염증 - 19 예방을 위한<br>
+        <strong>국가 지침 발표</strong><br>
+        중앙방역대책본부 · 중앙사고수습본부
+      </p>
+      <hr>
+      <p>다중이용시설을 대상으로 사업장 집중관리 지침이 적용됩니다.</p>
+      <ol>
+        <li>극장 내 직원을 통해 발열 체크와 이용자 명부를 작성해주시기 바랍니다.</li>
+        <li>상영관 입장 시 마스크를 착용해주시기 바랍니다.</li>
+        <li>마스크 미착용 시 영화관람에 제한이 될 수 있습니다.</li>
+      </ol>
+      <p>메가박스는 안전한 관람 환경을 제공하기 위해 항상 노력하겠습니다.<br>
+        감사합니다.
+      </p>
+      <form>
+        <input type="checkbox" id="day3">
+        <label for="day3">3일간 보지 않기</label>
+        <input type="checkbox" id="allday">
+        <label for="allday">다시 보지 않기</label>
+        <input id="close_btn" type="button" value="X">
+      </form>
+    </div>
+    <header class="header">
+      <div class="container">
+          <div class="content">
+          <nav class="nav01">
+            <ul class="top_nav">
+              <li><a href="#" title="VIP LOUNGE">VIP LOUNGE</a></li>
+              <li><a href="#" title="멤버십">멤버십</a></li>
+              <li><a href="#" title="고객센터">고객센터</a></li>
+            </ul>
+            <ul class="bottom_nav">
+              <li>
+                <img src="images/menu.png" alt="menu" title="사이트맵" id="sitemap_btn">
+                <div class="sitemap">
+                  <div class="container">
+                    <div class="content">
+                      <h2>SITEMAP</h2>
+                      <ul class="sitemap_menu">
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">영화</li>
+                            <li><a href="#">전체영화</a></li>
+                            <li><a href="#">큐레이션</a></li>
+                            <li><a href="#">영화제</a></li>
+                            <li><a href="#">무비포스트</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">예매</li>
+                            <li><a href="#">빠른예매</a></li>
+                            <li><a href="#">상영시간표</a></li>
+                            <li><a href="#">더 부티크 프라이빗 예매</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">극장</li>
+                            <li><a href="#">전체극장</a></li>
+                            <li><a href="#">특별관</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">이벤트</li>
+                            <li><a href="#">진행중 이벤트</a></li>
+                            <li><a href="#">지난 이벤트</a></li>
+                            <li><a href="#">당첨자발표</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">스토어</li>
+                            <li><a href="#">새로운 상품</a></li>
+                            <li><a href="#">메가티켓</a></li>
+                            <li><a href="#">메가찬스</a></li>
+                            <li><a href="#">팝코/음료/굿즈</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">혜택</li>
+                            <li><a href="#">멤버십 안내</a></li>
+                            <li><a href="#">VIP LOUNGE</a></li>
+                            <li><a href="#">제휴/할인</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">고객센터</li>
+                            <li><a href="#">고객센터 홈</a></li>
+                            <li><a href="#">자주묻는질문</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                            <li><a href="#">단체/대관문의</a></li>
+                            <li><a href="#">분실물문의</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">회사소개</li>
+                            <li><a href="#">메가박스소개</a></li>
+                            <li><a href="#">사회공헌</a></li>
+                            <li><a href="#">홍보자료</a></li>
+                            <li><a href="#">제휴/부대사업문의</a></li>
+                            <li><a href="#">온라인제보센터</a></li>
+                            <li><a href="#">IR자료</a></li>
+                            <li><a href="#">인재채용</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li class="sitemap_tit">이용정책</li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">스크린수배정에 관한 기준</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li><a href="#" title="검색"></a><img src="images/search.png" alt="search"></a></li>
+              <li>
+                <a href="#" title="영화">영화</a>
+                <ul class="sub_nav">
+                  <li><a href="#">전체영화</a></li>
+                  <li><a href="#">큐레이션</a></li>
+                  <li><a href="#">무비포스트</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" title="예매">예매</a>
+                <ul class="sub_nav">
+                  <li><a href="#">빠른예매</a></li>
+                  <li><a href="#">상영시간표</a></li>
+                  <li><a href="#">더 부티크 프라이빗 예매</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" title="극장">극장</a>
+                <ul class="sub_nav">
+                  <li><a href="#">전체극장</a></li>
+                  <li><a href="#">특별관</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="logo">
+            <img src="images/logo.png" alt="logo">
+          </div>
+          <nav class="nav02">
+            <ul class="top_nav">
+              <li><a href="#" title="로그인" id="login">로그인</a></li>
+              <li><a href="#" title="회원가입">회원가입</a></li>
+              <li><a href="#" title="빠른예매">빠른예매</a></li>
+            </ul>
+            <ul class="bottom_nav">
+              <li>
+                <a href="#" title="이벤트">이벤트</a>
+                <ul class="sub_nav">
+                  <li><a href="#">진행중 이벤트</a></li>
+                  <li><a href="#">지난 이벤트</a></li>
+                  <li><a href="#">당첨자발표</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="스토어">스토어</a></li>
+              <li>
+                <a href="#" title="혜택">혜택</a>
+                <ul class="sub_nav">
+                  <li><a href="#">메가박스 멤버십</a></li>
+                  <li><a href="#">제휴/할인</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="상영시간표"><img src="images/schedule_01.png" alt="schedule_01" id="schedule"></a></li>
+              <li><a href="#" title="나의 메가박스"><img src="images/people.png" alt="mymegabox"></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <section class="section">
+      <div class="container"></div>
+    </section>
+    <footer class="footer">
+      <div class="container"></div>
+    </footer>
   </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-$(function(){
+function popUp(){
   // pop_up cookie
   var day3=$('#day3');
   var allDay=$('#allday');
@@ -26,4 +26,4 @@ $(function(){
       day3.prop('checked',false);
     }
   });
-})
+}

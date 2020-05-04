@@ -56,3 +56,6 @@ input,select,textarea,button{
 .fl_right{
   float:right;
 }
+.border_none{
+  border:none;
+}

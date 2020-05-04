@@ -1,4 +1,4 @@
-$(function(){
+function login(){
   $('#login').click(function(){
     $('.login_form').show();
     $('html,body').css('overflow','hidden').css('height','100%');
@@ -7,4 +7,4 @@ $(function(){
     $('.login_form').hide();
     $('html,body').css('overflow','auto').css('height','auto');
   });
-})
+}

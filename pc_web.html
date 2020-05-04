@@ -458,6 +458,19 @@
       color:white;
       font-size:15px;
     }
+    .movie_chart p{
+      font-size:14px;
+      padding-right:20px;
+      margin-top:-40px;
+      color:#aaa;
+      background-image:url('images/plus.png');
+      background-repeat:no-repeat;
+      background-position:right;
+      cursor:pointer;
+    }
+    .movie_chart p:hover{
+      text-decoration:underline;
+    }
     .swiper-container{
       margin-bottom:50px;
     }
@@ -585,6 +598,25 @@
       background-image:url('images/search.png');
       background-repeat:no-repeat;
       background-position:right;
+    }
+    .mouse_ani{
+      position:relative;
+    }
+    .mouse_ani>img{
+      position:absolute;
+      top:30px;
+      left:50%;
+      transform:translateX(-50%);
+      animation-name:mmove;
+      animation-delay:2s;
+      animation-duration:3s;
+      animation-iteration-count:infinite;
+    }
+    @keyframes mmove{
+      0%{top:30px;}
+      40%{top:60px;}
+      60%{top:60px;}
+      100%{top:30px;}
     }
     .footer{
       height:300px;
@@ -834,9 +866,12 @@
       <div class="container">
         <article class="article movie_chart">
           <div class="content">
-            <h2>
-              <a href="#">박스오피스</a>
-            </h2>
+            <div class="boxoffice_tit clear_fix">
+              <h2>
+                <a href="#">박스오피스</a>
+              </h2>
+              <p class="fl_right">더 많은 영화보기</p>
+            </div>
             <div class="swiper-container">
               <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -1248,7 +1283,7 @@
             </div>
             <ul class="quick_movie_menu">
               <li>
-                <input type="text" value="영화명을 입력하세요">
+                <input type="text" placeholder="영화명을 입력하세요">
               </li>
               <li>
                 <a href="#">상영시간표</a>
@@ -1260,6 +1295,9 @@
                 <a href="#">빠른예매</a>
               </li>
             </ul>
+            <div class="mouse_ani">
+              <img src="images/mouse.png" alt="mouse">
+            </div>
           </div>
         </article>
       </div>

@@ -28,6 +28,7 @@
   <script src="js/login.min.js"></script>
   <script src="js/sitemap.min.js"></script>
   <script src="js/sub_position.min.js"></script>
+  <script src="js/user_slider.min.js"></script>
   <script>
     $(function(){    
       skip();
@@ -44,6 +45,24 @@
       $('.git_hub').click(function(){
         location.href=('https://github.com/kig1078/megabox');
       });
+
+      var cnt=0;
+      $('#prev').click(function(){
+        if(cnt>0){
+          cnt--;
+        }else{
+          cnt=3;
+        }       
+        userSlide(cnt);
+      })
+      $('#next').click(function(){
+        if(cnt<3){
+          cnt++;
+        }else{
+          cnt=0;
+        }
+        userSlide(cnt);
+      })
 
       subPosition();
       $(window).resize(function(){
@@ -301,7 +320,7 @@
       cursor:pointer;
     }
 
-
+    /* header */
     .header{
       background:linear-gradient(145deg,#0c0908 10%,#161d2b 60%,#2b1f22 90%);
       position:relative;
@@ -474,7 +493,7 @@
       color:white;
       font-size:15px;
     }
-    .movie_chart p{
+    .movie_chart p.more_btn{
       font-size:14px;
       padding-right:20px;
       margin-top:-40px;
@@ -484,12 +503,13 @@
       background-position:right;
       cursor:pointer;
     }
-    .movie_chart p:hover{
+    .movie_chart p.more_btn:hover{
       text-decoration:underline;
     }
     .swiper-container{
       margin-bottom:50px;
     }
+    /* movie chart */
     .poster{
       overflow:hidden;
       position:relative;
@@ -634,12 +654,292 @@
       60%{top:60px;}
       100%{top:30px;}
     }
+  </style>
+  <style>
+    /* benefit */
+    .benefit{
+      box-sizing:border-box;
+      height:1150px;
+      padding-top:50px;
+      background:url('images/benefit_bg.jpg');
+    }
+    .benefit h3{
+      font-weight:normal;
+      font-size:28px;
+      color:#503396;
+    }
+    .grid_par{
+      display:grid;
+      grid-template-columns:auto auto auto auto auto auto auto auto auto auto auto auto;
+      grid-column-gap:24px;
+    }
+    .grid_par>div:nth-child(1){
+      grid-column:1/4;
+    }
+    .grid_par>div:nth-child(2){
+      grid-column:4/8;
+    }
+    .grid_par>div:nth-child(3){
+      grid-column:8/13;
+      grid-row:1/3;
+    }
+    .grid_par>div:nth-child(4){
+      grid-column:1/6;
+    }
+    .grid_par>div:nth-child(5){
+      grid-column:6/8;
+    }
+    #grid_child01,#grid_child02{
+      overflow:hidden;
+      position:relative;
+      height:325px;
+    }
+    #grid_child01>div,#grid_child02>div{
+      position:absolute;
+      left:0;
+      top:100%;
+      opacity:0;
+      transition:0.8s;
+    }
+    #grid_child02>div{
+      left:100%;
+      top:0;
+    }
+    #grid_child01>div.active{
+      top:0;
+      opacity:1;
+    }
+    #grid_child02>div.active{
+      left:0;
+      opacity:1;
+    }
+    #grid_child01>ul{
+      width:100%;
+      position:absolute;
+      bottom:0;
+      display:flex;
+      flex-flow:row nowrap;
+      justify-content:space-between;
+    }
+    #grid_child01 span{
+      color:#503396;
+    }
+    #img_btn span{
+      font-size:20px;
+      font-weight:bolder;
+      color:gray;
+      cursor:pointer;
+    }
+    #img_btn span:hover{
+      color:#503396;
+    }
+    #img_bar{
+      padding-top:8px;
+    }
+    .img_bar_par{
+      width:160px;
+      height:2px;
+      background:#eee;
+      display:flex;
+    }
+    .img_bar_par>div{
+      text-indent:-9999px;
+      flex:1;
+      height:2px;
+    }
+    .img_bar_par>div.active{
+      background:#503396;
+    }
+    #img_btn,#img_num{
+      display:flex;
+      justify-content:center;
+    }
+    #img_btn{
+      color:#503396;
+    }
+    #img_num{
+      padding-top:3px;
+    }
+    #grid_child03,#grid_child04,#grid_child05{
+      overflow:hidden;
+      border-radius:5px;
+    }
+    #grid_child03>img{
+      height:100%;
+    }
+    .ico_par{
+      padding:50px 0;
+      border-bottom:0.5px solid rgba(255,255,255,0.2);
+    }
+    .ico_par>li{
+      width:20%;
+    }
+    .ico_par>li>a{
+      height:70px;
+      display:flex;
+      flex-flow:column nowrap;
+      justify-content: space-between;
+      align-items:center;
+      color:white;
+    }
+    img[src*="vip"],img[src*="membership"]{
+      margin-top:-4px;
+    }
+    img[src*="salecard"]{
+      margin-top:6px;
+    }
+    /* grand_open */
+    .grand_open{
+      padding:50px 0;
+    }
+    .grand_txt,.grand_img{
+      margin-right:300px;
+      color:white;
+    }
+    .grand_txt>h3{
+      padding-top:20px;
+      color:white;
+    }
+    .grand_txt>hr{
+      width:30px;
+      height:2px;
+      background:white;
+    }
+    .grand_img{
+      position:relative;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      overflow:hidden;
+    }
+    .grand_img>div:nth-child(1){
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      z-index:1;
+    }
+    .grand_img>div:nth-child(2){
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:2;
+      width:100%;
+      height:100%;
+      background:white;
+      opacity:0;
+      transition:0.1s;
+    }
+    .grand_img:hover>div:nth-child(2){
+      opacity:1;
+    }
+    .grand_img>div:nth-child(3){
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:3;
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-flow:column nowrap;
+      justify-content:center;
+      align-items:center;
+    }
+    .open_tit{
+      padding:5px 10px;
+      background-color:#01738b;
+      margin-bottom:16px;
+    }
+    .open_sec01{
+      margin-bottom:16px;
+    }
+    .grand_img:hover .open_sec01{
+      color:#01738b;
+    }
+    .open_sec02{
+      margin-bottom:16px;
+      font-size:24px;
+      font-weight:bold;
+    }
+    .grand_img:hover .open_sec02{
+      color:#01738b;
+    }
+    .grand_img:hover .open_data{
+      color:#01738b;
+    }
     .footer{
       height:300px;
       background:rgba(0,255,0,0.2);
     }
   </style>
-
+  <style>
+    .curation{
+      background:#252451;
+      padding:50px 0;
+    }
+    .curation .tit{
+      display:flex;
+      justify-content:space-between;
+    }
+    .curation .tit h2{
+      color:white;
+      font-size:28px;
+      font-weight:normal;
+    }
+    .curation .tit p{
+      color:rgba(255,255,255,0.6);
+      display:flex;
+      width:120px;
+      justify-content:space-between;
+      cursor:pointer;
+    }
+    .curation .tit p:hover span:first-child{
+      text-decoration:underline;
+    }
+    .curation ,tit p span:last-child{
+      font-size:30px;
+      margin-top:-8px;
+    }
+    .curation_content{
+      padding:30px 0;
+      display:grid;
+      grid-template-columns:320px auto;
+      grid-column-gap:50px;
+    }
+    .curation_left{
+      position:relative;
+      text-align:right;
+    }
+    .curation_left .left_img,.curation_left .left_btn{
+      display:inline-block;
+    }
+    .curation_left .left_img{
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .curation_left .left_btn{
+      padding:10px 0;
+      width:90%;
+    }
+    .curation_left .left_btn a>p{
+      padding:12px 0;
+      width:48%;
+      text-align:center;
+      font-size:24px;
+      border:1px solid white;
+      border-radius:5px;
+      color:white;
+    }
+    .curation_left .left_btn a:last-child>p{
+      background:#037b94;
+      border-color:#037b94;
+    }
+    .curation_left .left_over{
+      position:absolute;
+      left:0;
+      top:0;
+    }
+  </style>
   <title>라이프시어터, 메가박스</title>
 </head>
 <body>
@@ -886,7 +1186,7 @@
               <h2>
                 <a href="#">박스오피스</a>
               </h2>
-              <p class="fl_right">더 많은 영화보기</p>
+              <p class="more_btn fl_right">더 많은 영화보기</p>
             </div>
             <div class="swiper-container">
               <div class="swiper-wrapper">
@@ -1316,9 +1616,163 @@
             </div>
           </div>
         </article>
-        <article class="article bonus">
-          
+      </div>
+    </section>
+    <section class="benefit">
+      <div class="container">
+        <article class="article">
+          <h3>혜택</h3>
+          <div class="content grid_par">
+            <div id="grid_child01">
+              <div class="img01 active">
+                <img src="images/benefit_00.jpg" alt="benefit00">
+              </div>
+              <div class="img02">
+                <img src="images/benefit_01.jpg" alt="benefit01">
+              </div>
+              <div class="img03">
+                <img src="images/benefit_02.jpg" alt="benefit02">
+              </div>
+              <div class="img04">
+                <img src="images/benefit_03.jpg" alt="benefit03">
+              </div>
+              <ul>
+                <li id="img_bar">
+                  <div class="img_bar_par">
+                    <div class="active">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                  </div>
+                </li>
+                <li id="img_btn">
+                  <span id="prev">&lt&nbsp&nbsp</span>
+                  <span id="next"> &gt</span>
+                </li>
+                <li id="img_num">
+                  <span id="page">1</span>
+                  <span>&nbsp/&nbsp</span>
+                  <span id="all_page">4</span>
+                </li>
+              </ul>
+            </div>
+            <div id="grid_child02">
+              <div class="img01 active">
+                <img src="images/benefit_right_00.jpg" alt="benefit_right_00">
+              </div>
+              <div class="img02">
+                <img src="images/benefit_right_01.jpg" alt="benefit_right_01">
+              </div>
+              <div class="img03">
+                <img src="images/benefit_right_02.jpg" alt="benefit_right_02">
+              </div>
+              <div class="img04">
+                <img src="images/benefit_right_03.jpg" alt="benefit_right_03">
+              </div>
+            </div>
+            <div id="grid_child03">
+              <img src="images/benefit_banner_00.jpg" alt="benefit_banner_00">
+            </div>
+            <div id="grid_child04">
+              <img src="images/benefit_bottom_00.jpg" alt="benefit_bottom_00">
+            </div>
+            <div id="grid_child05">
+              <img src="images/benefit_bottom_01.jpg" alt="benefit_bottom_01">
+            </div>
+          </div>
         </article>
+        <article class="article benefit_quick_menu">
+          <ul class="content ico_par clear_fix">
+            <li class="fl_left">
+              <a href="#">
+                <img src="images/vip.png" alt="vip_icon">
+                <p>VIP RAUNGE</p>
+              </a>
+            </li>
+            <li class="fl_left">
+              <a href="#">
+                <img src="images/membership.png" alt="membership_icon">
+                <p>멤버십</p>
+              </a>
+            </li>
+            <li class="fl_left">
+              <a href="#">
+                <img src="images/salecard.png" alt="salecard_icon">
+                <p>할인카드안내</p>
+              </a>
+            </li>
+            <li class="fl_left">
+              <a href="#">
+                <img src="images/event.png" alt="event_icon">
+                <p>이벤트</p>
+              </a>
+            </li>
+            <li class="fl_left">
+              <a href="#">
+                <img src="images/store.png" alt="store_icon">
+                <p>스토어</p>
+              </a>
+            </li>
+          </ul>
+        </article>
+        <article class="article grand_open">
+          <div class="content clear_fix">
+            <div class="grand_txt fl_left">
+              <p>LIFE THEATER MEGABOX</p>
+              <h3>
+                GRAND<br>
+                OPENING
+              </h3>
+              <hr>
+            </div>
+            <div class="grand_img fl_left">
+              <div>
+                <img src="images/grand_bg.jpg" alt="grand_bg">
+              </div>
+              <div>화이트</div>
+              <div>
+                <p class="open_tit">신규오픈</p>
+                <p class="open_sec01">경기</p>
+                <p class="open_sec02">용인기흥</p>
+                <p class="open_data">2020.05.14</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="curation">
+      <div class="container">
+        <div class="content">
+          <div class="tit">
+            <h2>큐레이션</h2>
+            <p><span>큐레이션 더보기</span><span>+</span></p>
+          </div>
+          <div class="curation_content">
+            <div class="curation_left">
+              <div class="left_img">
+                <img src="images/curation_poster.jpg" alt="curation_poster">
+              </div>
+              <div class="left_btn clear_fix">
+                <a href="#"><p class="view fl_left">상세보기</p></a>
+                <a href="#"><p class="ticket fl_right">예매</p></a>
+              </div>
+              <div class="left_over">
+                <div class="left_over_txt">
+                  <h4>
+                    MEGABOX<br>
+                    FILM
+                    SOCIETY
+                  </h4>
+                </div>
+                <div class="left_over_base">
+                  삼각형
+                </div>
+              </div>
+            </div>
+            <div class="curation_right"></div>
+          </div>
+        </div>
       </div>
     </section>
     <footer class="footer">

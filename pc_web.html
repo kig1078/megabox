@@ -20,6 +20,18 @@
   <script src="js/jquery-3.5.0.min.js"></script>
   <!-- swiper -->
   <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/skip_menu.css">
+  <link rel="stylesheet" href="css/github.css">
+  <link rel="stylesheet" href="css/login_form.css">
+  <link rel="stylesheet" href="css/top_banner.css">
+  <link rel="stylesheet" href="css/pop_up.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/movie_chart.css">
+  <link rel="stylesheet" href="css/benefit.css">
+  <link rel="stylesheet" href="css/grand_open.css">
+  <link rel="stylesheet" href="css/curation.css">
+  <link rel="stylesheet" href="css/megabox_info.css">
+  <link rel="stylesheet" href="css/footer.css">
   <script src="js/swiper.min.js"></script>
   <script src="js/skip.min.js"></script>
   <script src="js/banner.min.js"></script>
@@ -71,875 +83,6 @@
     })
   </script>
   <link rel="stylesheet" href="css/reset.css">
-  <style>
-     /* skip menu */
-    .skip{
-      width:100%;
-      height:50px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background-color:#503396;
-      position:absolute;
-      top:-50px;
-      z-index:1;
-    }
-    .skip a{
-      margin:0 5px;
-      border:2px solid transparent;
-      padding:4px 10px;
-      color:white;
-      font-weight:bold;
-    }
-    .skip a:focus{
-      border:2px solid white;
-    }
-    
-    /* git_hub */
-    .git_hub{
-      width:150px;
-      padding:5px 0;
-      transform:rotate(-45deg);
-      cursor:pointer;
-      position:fixed;
-      left:-30px;
-      top:30px;
-      z-index:2;
-    }
-    .git_hub p{
-      font-size:12px;
-      color:white;
-      text-align:center;
-      background-color:#fd5252;
-    }
-
-    /* login_form */
-    .login_form{
-      display:none;
-      position:fixed;
-      left:0;
-      top:0;
-      z-index:3;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.8);
-    }
-    .login_form .content{
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:500px;
-      height:420px;
-      background:white;
-    }
-    .login_form .login_tit{
-      padding:12px 24px;
-      background:#330a94;
-    }
-    .login_form .login_tit p{
-      font-size:18px;
-      color:white;
-    }
-    .login_form .login_tit img{
-      cursor:pointer;
-    }
-    .login_form form{
-      padding:12px 24px;
-    }
-    .login_form form .id_pass{
-      box-sizing:border-box;
-      width:100%;
-      border:1px solid #999;
-      margin:20px 0;
-      padding:12px;
-      font-weight:bold;
-      color:#330a94;
-    }
-    .login_form form .id_pass:hover{
-      border:1px solid #333;
-    }
-    .login_form form .id_pass::placeholder{
-      font-weight:bold;
-      color:#330a94;
-    }
-    .login_form form input[type="checkbox"],.login_form form label{
-      display:inline-block;
-      margin-bottom:16px;
-    }
-    .login_form form input[type="button"]{
-      width:100%;
-      border-radius:2px;
-      padding:12px;
-      background-color:#330a94;
-      color:white;
-      font-size:20px;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    .login_form .login_menu{
-      padding:12px 20px;
-      display:flex;
-      flex-flow:row nowrap;
-      justify-content:center;
-    }
-    .login_form .login_menu li{
-      margin:0 10px;
-    }
-    .login_form .login_menu li a{
-      color:#999
-    }
-    .login_form .login_menu li a:hover{
-      color:#333;
-      text-decoration:underline;
-    }
-    .login_form .login_menu li:nth-child(2n){
-      width:1px;
-      background:gray;
-    }
-    .login_form .sns_login{
-      padding:12px 20px;
-      display:grid;
-      grid-template-columns:auto auto auto auto;
-      grid-column-gap:20px;
-    }
-    .login_form .sns_login li{
-      text-align:center;
-    }
-
-    .wrap{
-      position:relative;
-      width:100%;
-      max-width:2000px;
-      margin:0 auto;
-    }
-    .container{
-      width:1100px;
-      margin:0 auto;
-    }
-
-    /* banner section */
-    .banner01{
-      text-align:center;
-      background-color:#4f79a9;
-    }
-    .banner02{
-      text-align:center;
-      background-color:#4f79a9;
-    }
-    .banner img{
-      display:inline-block;
-    }
-    .banner .close{
-      position:absolute;
-      right:0;
-      bottom:0;
-      width:20px;
-      height:20px;
-      background-color:#330a94;
-      color:white;
-      text-align:center;
-      line-height:20px;
-      cursor:pointer;
-    }
-    .banner>div{
-      display:none;
-      position:relative;
-    }
-    .banner>div.active{
-      display:block;
-    }
-
-    /* pop_up */
-    .pop_up{
-      position:absolute;
-      left:50%;
-      top:150px;
-      transform:translateX(-50%);
-      box-sizing:border-box;
-      z-index:2;
-      width:400px;
-      height:438px;
-      border-radius:7px;
-      padding-top:30px;
-      background:#ddd;
-      text-align:center;
-      display:none;
-    }
-    .pop_up h3{
-      display:inline-block;
-      width:145px;
-      margin-bottom:20px;
-      padding:14px 0;
-      color:white;
-      background:#a5a5a5;
-      text-align:center;
-      font-size:20px;
-      border-radius:4px;
-    }
-    .pop_up p{
-      font-size:12px;
-      line-height:2;
-    }
-    .pop_up strong{
-      font-size:12px;
-      font-weight:bold;
-    }
-    .pop_up ol{
-      margin:10px 6px;
-    }
-    .pop_up ol,.pop_up li{
-      text-align:left;
-      list-style:decimal inside;
-      text-indent:5px;
-      font-size:12px;
-      padding:5px 0;
-    }
-    .pop_up hr{
-      width:388px;
-      height:2px;
-      background:#aeaeae;
-      margin:20px 6px;
-    }
-    .pop_up form{
-      display:flex;
-      justify-content:flex-end;
-      align-items:center;
-      height:60px;
-      padding-right:20px;
-      background:#ecf0f4;
-      border-bottom-left-radius:7px;
-      border-bottom-right-radius:7px;
-    }
-    .pop_up form label{
-      margin-right:30px;
-    }
-    .pop_up form input[type="button"]{
-      width:16px;
-      text-align:center;
-      cursor:pointer;
-    }
-
-    /* header */
-    .header{
-      background:linear-gradient(145deg,#0c0908 10%,#161d2b 60%,#2b1f22 90%);
-      position:relative;
-    }
-    .header>.container>.content{
-      display:flex;
-      height:90px;
-      flex-flow:row nowrap;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .top_nav,.bottom_nav{
-      display:flex;
-      flex-flow:row nowrap;
-    }
-    .top_nav{
-      margin-bottom:20px;
-    }
-    .logo{
-      margin-left:45px;
-    }
-    .nav01 .top_nav>li{
-      margin-right:20px;
-    }
-    .nav01 .bottom_nav>li{
-      margin-right:60px;
-    }
-    .nav01>.bottom_nav>li>a{
-      padding-bottom:12px;
-    }
-    .nav01 .bottom_nav>li:first-child{
-      margin-right:18px;
-    }
-    .nav02 .top_nav{
-      justify-content:flex-end;
-    }
-    .nav02 .top_nav>li{
-      margin-left:20px;
-    }
-    .nav02 .bottom_nav>li{
-      margin-left:60px;
-    }
-    .nav02 .bottom_nav>li:last-child{
-      margin-left:20px;
-    }
-    .nav02>.bottom_nav>li>a{
-      padding-bottom:16px;
-    }
-    .nav02 #schedule{
-      margin-top:-7px;
-    }
-    .top_nav a{
-      color:#999;
-    }
-    .top_nav a:hover{
-      text-decoration:underline;
-    }
-    .sub_nav{
-      position:absolute;
-      left:0;
-      bottom:-40px;
-      width:100%;
-      height:20px;
-      padding:10px;
-      background:rgba(0,0,0,0.5);
-      display:flex;
-    }
-    .bottom_nav a{
-      color:#fff;
-      font-size:20px;
-    }
-    .nav02>.bottom_nav>li>a{
-      padding-bottom:16px;
-    }
-    .bottom_nav>li:hover>a{
-      border-bottom:2px solid white;
-    }
-    .bottom_nav>li:hover>.sub_nav{
-      display:flex;
-    }
-    #sitemap_btn{
-      cursor:pointer;
-    }
-    .sitemap{
-      width:100%;
-      position:absolute;
-      left:0;
-      top:90px;
-      z-index:4;
-      background-color:#666;
-    }
-    .sitemap .content{
-      padding:50px 0;
-    }
-    .sitemap_menu{
-      display:grid;
-      grid-template-columns: 15.15151515151515% 15.15151515151515% 15.15151515151515% 15.15151515151515% 15.15151515151515% 15.15151515151515%;
-      grid-column-gap:20px;
-      grid-row-gap:80px
-    }
-    .sitemap_menu>li:nth-child(6){
-      grid-column:6;
-      grid-row:1/3;
-    }
-    .sitemap h2{
-      font-size:24px;
-      font-weight:normal;
-      margin-bottom:20px;
-      color:white;
-    }
-    .sitemap_menu>li>ul>li{
-      margin:20px 0;
-      text-align:center;
-    }
-    .sitemap_menu>li>ul>li>a{
-      font-size:16px;
-      color:#fff;
-      font-weight:100;
-    }
-    .sitemap_menu>li>ul>li>a:hover{
-      text-decoration:underline;
-      color:#330a94;
-    }
-    .sitemap_tit{
-      border-top:1px solid #999;
-      border-bottom:1px solid #999;
-      padding:12px 0;
-      font-size:18px;
-      font-weight:bold;
-      color:white;
-    }
-    .sub_nav{
-      position:absolute;
-      left:0;
-      bottom:-40px;
-      width:100%;
-      height:20px;
-      padding:10px;
-      background:rgba(0,0,0,0.5);
-      display:flex;
-    }
-    .sub_nav li{
-      padding:0 20px;
-    }
-    .sub_nav a{
-      font-size:16px;
-    }
-    .sub_nav a:hover{
-      text-decoration:underline;
-    }
-    .sitemap, .sub_nav{
-      display:none;
-    }
-    .border_none{
-      border:none !important;
-    }
-    .section{
-      padding:70px 0 120px;
-      background:linear-gradient(145deg,#0c0908 10%,#161d2b 40%,#2b1f22 90%);
-    }
-    .movie_chart h2{
-      text-align:center;
-      margin-bottom:30px;
-    }
-    .movie_chart h2 a{
-      border-bottom:1px solid white;
-      padding-bottom:5px;
-      font-size:15px;
-      font-weight:normal;
-      color:white;
-      font-size:15px;
-    }
-    .movie_chart p.more_btn{
-      font-size:14px;
-      padding-right:20px;
-      margin-top:-40px;
-      color:#aaa;
-      background-image:url('images/plus.png');
-      background-repeat:no-repeat;
-      background-position:right;
-      cursor:pointer;
-    }
-    .movie_chart p.more_btn:hover{
-      text-decoration:underline;
-    }
-    .swiper-container{
-      margin-bottom:50px;
-    }
-    /* movie chart */
-    .poster{
-      overflow:hidden;
-      position:relative;
-      border-radius:5px;
-      margin-bottom:7px;
-    }
-    .poster>img{
-      width:100%;
-    }
-    .poster>.poster_number{
-      position:absolute;
-      left:20px;
-      top:20px;
-      /* z-index:1; */
-      font-weight:bold;
-      font-size:30px;
-      color:white;
-      text-shadow:1px 1px 1px black;
-    }
-    .poster>.poster_txt{
-      position:absolute;
-      left:0;
-      top:0;
-      right:0;
-      bottom:0;
-      padding:20px;
-      background:rgba(0,0,0,0.6);
-      color:white;
-      opacity:0;
-      transition:0.2s;
-    }
-    .poster:hover>.poster_txt{
-      opacity:1;
-    }
-    .poster>.poster_txt>p{
-      line-height:20px;
-    }
-    .poster>.poster_txt>p:first-child{
-      height:80%;
-      border-bottom:1px solid white;
-    }
-    .poster>.poster_txt>p:last-child{
-      height:20%;
-      padding:0 50px;
-      display:flex;
-      justify-content:space-around;
-      align-items:center;
-    }
-    .poster>.poster_txt>p>span{
-      font-size:24px;
-      color:#59bec9;
-    }
-    .poster_btn{
-      color:white;
-    }
-    .poster_btn>div{
-      border-radius:5px;
-      box-sizing:border-box;
-      text-align:center;
-    }
-    .poster_btn>div:first-child{
-      display:flex;
-      justify-content:space-between;
-      width:32%;
-      padding:8px 14px;
-      border:1px solid #555;
-      background:#0c0a0a;
-    }
-    .poster_btn>div:first-child>span{
-      text-indent:-9999px;
-      width:17px;
-      height:15px;
-      background-image:url('images/heart.png');
-      background-repeat:no-repeat;
-    }
-    .poster_btn>div:last-child{
-      width:65%;
-      background:#037b94;
-      padding:10px;
-    }
-    .quick_movie_menu{
-      display:flex;
-      align-items:center;
-      height:80px;
-      background:rgba(0,0,0,0.5);
-    }
-    .quick_movie_menu>li{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      border-right:1px solid white;
-    }
-    .quick_movie_menu>li:nth-child(4){
-      border-right:none;
-    }
-    .quick_movie_menu>li>a{
-      font-size:16px;
-      padding:10px 0 10px 30px;
-      color:white;
-      background-repeat:no-repeat;
-      background-position:left;
-    }
-    .quick_movie_menu>li>a:hover{
-      text-decoration:underline;
-    }
-    .quick_movie_menu>li:nth-child(2)>a{
-      background-image:url('images/schedule_02.png');
-    }
-    .quick_movie_menu>li:nth-child(3)>a{
-      background-image:url('images/boxoffice.png');
-    }
-    .quick_movie_menu>li:nth-child(4)>a{
-      padding-left:36px;
-      background-image:url('images/reserve.png');
-    }
-    .quick_movie_menu>li>input{
-      background:transparent;
-      border:none;
-      border-bottom:1px solid white;
-      padding:10px 30px 10px 0;
-      color:white;
-      background-image:url('images/search.png');
-      background-repeat:no-repeat;
-      background-position:right;
-    }
-    .mouse_ani{
-      position:relative;
-    }
-    .mouse_ani>img{
-      position:absolute;
-      top:30px;
-      left:50%;
-      transform:translateX(-50%);
-      animation-name:mmove;
-      animation-delay:2s;
-      animation-duration:3s;
-      animation-iteration-count:infinite;
-    }
-    @keyframes mmove{
-      0%{top:30px;}
-      40%{top:60px;}
-      60%{top:60px;}
-      100%{top:30px;}
-    }
-  </style>
-  <style>
-    /* benefit */
-    .benefit{
-      box-sizing:border-box;
-      height:1150px;
-      padding-top:50px;
-      background:url('images/benefit_bg.jpg');
-    }
-    .benefit h3{
-      font-weight:normal;
-      font-size:28px;
-      color:#503396;
-    }
-    .grid_par{
-      display:grid;
-      grid-template-columns:auto auto auto auto auto auto auto auto auto auto auto auto;
-      grid-column-gap:24px;
-    }
-    .grid_par>div:nth-child(1){
-      grid-column:1/4;
-    }
-    .grid_par>div:nth-child(2){
-      grid-column:4/8;
-    }
-    .grid_par>div:nth-child(3){
-      grid-column:8/13;
-      grid-row:1/3;
-    }
-    .grid_par>div:nth-child(4){
-      grid-column:1/6;
-    }
-    .grid_par>div:nth-child(5){
-      grid-column:6/8;
-    }
-    #grid_child01,#grid_child02{
-      overflow:hidden;
-      position:relative;
-      height:325px;
-    }
-    #grid_child01>div,#grid_child02>div{
-      position:absolute;
-      left:0;
-      top:100%;
-      opacity:0;
-      transition:0.8s;
-    }
-    #grid_child02>div{
-      left:100%;
-      top:0;
-    }
-    #grid_child01>div.active{
-      top:0;
-      opacity:1;
-    }
-    #grid_child02>div.active{
-      left:0;
-      opacity:1;
-    }
-    #grid_child01>ul{
-      width:100%;
-      position:absolute;
-      bottom:0;
-      display:flex;
-      flex-flow:row nowrap;
-      justify-content:space-between;
-    }
-    #grid_child01 span{
-      color:#503396;
-    }
-    #img_btn span{
-      font-size:20px;
-      font-weight:bolder;
-      color:gray;
-      cursor:pointer;
-    }
-    #img_btn span:hover{
-      color:#503396;
-    }
-    #img_bar{
-      padding-top:8px;
-    }
-    .img_bar_par{
-      width:160px;
-      height:2px;
-      background:#eee;
-      display:flex;
-    }
-    .img_bar_par>div{
-      text-indent:-9999px;
-      flex:1;
-      height:2px;
-    }
-    .img_bar_par>div.active{
-      background:#503396;
-    }
-    #img_btn,#img_num{
-      display:flex;
-      justify-content:center;
-    }
-    #img_btn{
-      color:#503396;
-    }
-    #img_num{
-      padding-top:3px;
-    }
-    #grid_child03,#grid_child04,#grid_child05{
-      overflow:hidden;
-      border-radius:5px;
-    }
-    #grid_child03>img{
-      height:100%;
-    }
-    .ico_par{
-      padding:50px 0;
-      border-bottom:0.5px solid rgba(255,255,255,0.2);
-    }
-    .ico_par>li{
-      width:20%;
-    }
-    .ico_par>li>a{
-      height:70px;
-      display:flex;
-      flex-flow:column nowrap;
-      justify-content: space-between;
-      align-items:center;
-      color:white;
-    }
-    img[src*="vip"],img[src*="membership"]{
-      margin-top:-4px;
-    }
-    img[src*="salecard"]{
-      margin-top:6px;
-    }
-    /* grand_open */
-    .grand_open{
-      padding:50px 0;
-    }
-    .grand_txt,.grand_img{
-      margin-right:300px;
-      color:white;
-    }
-    .grand_txt>h3{
-      padding-top:20px;
-      color:white;
-    }
-    .grand_txt>hr{
-      width:30px;
-      height:2px;
-      background:white;
-    }
-    .grand_img{
-      position:relative;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      overflow:hidden;
-    }
-    .grand_img>div:nth-child(1){
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      z-index:1;
-    }
-    .grand_img>div:nth-child(2){
-      position:absolute;
-      left:0;
-      top:0;
-      z-index:2;
-      width:100%;
-      height:100%;
-      background:white;
-      opacity:0;
-      transition:0.1s;
-    }
-    .grand_img:hover>div:nth-child(2){
-      opacity:1;
-    }
-    .grand_img>div:nth-child(3){
-      position:absolute;
-      left:0;
-      top:0;
-      z-index:3;
-      width:100%;
-      height:100%;
-      display:flex;
-      flex-flow:column nowrap;
-      justify-content:center;
-      align-items:center;
-    }
-    .open_tit{
-      padding:5px 10px;
-      background-color:#01738b;
-      margin-bottom:16px;
-    }
-    .open_sec01{
-      margin-bottom:16px;
-    }
-    .grand_img:hover .open_sec01{
-      color:#01738b;
-    }
-    .open_sec02{
-      margin-bottom:16px;
-      font-size:24px;
-      font-weight:bold;
-    }
-    .grand_img:hover .open_sec02{
-      color:#01738b;
-    }
-    .grand_img:hover .open_data{
-      color:#01738b;
-    }
-    .footer{
-      height:300px;
-      background:rgba(0,255,0,0.2);
-    }
-  </style>
-  <style>
-    .curation{
-      background:#252451;
-      padding:50px 0;
-    }
-    .curation .tit{
-      display:flex;
-      justify-content:space-between;
-    }
-    .curation .tit h2{
-      color:white;
-      font-size:28px;
-      font-weight:normal;
-    }
-    .curation .tit p{
-      color:rgba(255,255,255,0.6);
-      display:flex;
-      width:120px;
-      justify-content:space-between;
-      cursor:pointer;
-    }
-    .curation .tit p:hover span:first-child{
-      text-decoration:underline;
-    }
-    .curation ,tit p span:last-child{
-      font-size:30px;
-      margin-top:-8px;
-    }
-    .curation_content{
-      padding:30px 0;
-      display:grid;
-      grid-template-columns:320px auto;
-      grid-column-gap:50px;
-    }
-    .curation_left{
-      position:relative;
-      text-align:right;
-    }
-    .curation_left .left_img,.curation_left .left_btn{
-      display:inline-block;
-    }
-    .curation_left .left_img{
-      border-radius:10px;
-      overflow:hidden;
-    }
-    .curation_left .left_btn{
-      padding:10px 0;
-      width:90%;
-    }
-    .curation_left .left_btn a>p{
-      padding:12px 0;
-      width:48%;
-      text-align:center;
-      font-size:24px;
-      border:1px solid white;
-      border-radius:5px;
-      color:white;
-    }
-    .curation_left .left_btn a:last-child>p{
-      background:#037b94;
-      border-color:#037b94;
-    }
-    .curation_left .left_over{
-      position:absolute;
-      left:0;
-      top:0;
-    }
-  </style>
   <title>라이프시어터, 메가박스</title>
 </head>
 <body>
@@ -1761,22 +904,238 @@
                 <div class="left_over_txt">
                   <h4>
                     MEGABOX<br>
-                    FILM
+                    FILM<br>
                     SOCIETY
                   </h4>
                 </div>
                 <div class="left_over_base">
-                  삼각형
                 </div>
               </div>
             </div>
-            <div class="curation_right"></div>
+            <div class="curation_right">
+              <h3>#필름소사이어티</h3>
+              <h2>라라랜드</h2>
+              <hr>
+              <p>황홀한 사랑, 순수한 희망, 격렬한 열정 ...</p>
+              <p>이 곳에서 모든 감정이 폭발한다!<br>
+                꿈을 꾸는 사람들을 위한 별들의 도시 ‘라라랜드’. 재즈 피아니스트 ‘세바스찬’(라이언 고슬링)과 배우 지망생 ‘미아’(엠마 스톤), 인생에서 가장 빛나는 순간 만난 두 사람은 미완성인 서로의 무대를 만들어가기 시작한다.
+              </p>
+              <ul class="curation_poster">
+                <li>
+                  <div class="curation_poster_img">
+                    <img src="images/curation_poster_01.jpg" alt="curation_poster_01">
+                  </div>
+                  <div class="curation_poster_txt">
+                    <p>레이니 데이 인 뉴욕</p>
+                  </div>
+                  <div class="curation_poster_over">
+                    <p class="f_color">F</p>
+                    <p></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="curation_poster_img">
+                    <img src="images/curation_poster_02.jpg" alt="curation_poster_02">
+                  </div>
+                  <div class="curation_poster_txt">
+                    <p>패왕별희 디 오리지널</p>
+                  </div>
+                  <div class="curation_poster_over">
+                    <p class="c_color">C</p>
+                    <p class="c_border"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="curation_poster_img">
+                    <img src="images/curation_poster_03.jpg" alt="curation_poster_03">
+                  </div>
+                  <div class="curation_poster_txt">
+                    <p>[오페라] 리골리토</p>
+                  </div>
+                  <div class="curation_poster_over">
+                    <p class="f_color">F</p>
+                    <p></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="curation_poster_img">
+                    <img src="images/curation_poster_04.jpg" alt="curation_poster_04">
+                  </div>
+                  <div class="curation_poster_txt">
+                    <p>[오페라] 마담 버터플라이</p>
+                  </div>
+                  <div class="curation_poster_over">
+                    <p class="c_color">C</p>
+                    <p class="c_border"></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <section class="megabox_info">
+      <article class="article">
+        <div class="container">
+          <div class="content">
+            <h2>메가박스 안내</h2>
+            <ul class="megabox_info_img">
+              <li><a href="#">
+                <img src="images/info_01.png" alt="info_01">
+              </a></li>
+              <li><a href="#">
+                <img src="images/info_02.png" alt="info_02">
+              </a></li>
+              <li><a href="#">
+                <img src="images/info_03.png" alt="info_03">
+              </a></li>
+              <li><a href="#">
+                <img src="images/info_04.png" alt="info_04">
+              </a></li>
+              <li><a href="#">
+                <img src="images/info_05.png" alt="info_05">
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="article">
+        <div class="container">
+          <div class="content">
+            <ul class="notice">
+              <li>지점</li>
+              <li class="clear_fix">
+                <p class="fl_left">
+                  <span>[일산벨라시타]</span>
+                  <span>
+                    <a href="#">5월 방역작업에 따른 정기 휴점 안내</a>
+                  </span>
+                </p>
+                <p class="fl_right">2020.05.06</p>
+              </li>
+              <li>
+                <a href="#">더보기 ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="article">
+        <div class="container">
+          <div class="content">
+            <ul class="megabox_info_quicknav">
+              <li>
+                <img src="images/customer.png" alt="customer">
+                <p>고객센터</p>
+              </li>
+              <li>
+                <img src="images/faq.png" alt="faq">
+                <p>자주 묻는 질문</p>
+              </li>
+              <li>
+                <img src="images/qna.png" alt="qna">
+                <p>1:1 문의</p>
+              </li>
+              <li>
+                <img src="images/group.png" alt="group">
+                <p>단체/대관 문의</p>
+              </li>
+              <li>
+                <img src="images/lost.png" alt="lost">
+                <p>분실물 문의/접수</p>
+              </li>
+              <li>
+                <img src="images/boutique.png" alt="boutique">
+                <p>더 부티크 프라이빗 대관예매</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="bottom_banner">
+      <a href="#">
+        <img src="images/bottom_banner.jpg" alt="bottom_banner">
+      </a>
+    </section>
     <footer class="footer">
-      <div class="container"></div>
+      <div class="container">
+        <div class="content clear_fix">
+          <div class="footer_left fl_left">
+            <ul class="footer_nav">
+              <li>
+                <a href="#" title="회사소개 페이지로 이동">회사소개</a>
+              </li>
+              <li>
+                <a href="#" title="인재채용 페이지로 이동">인재채용</a>
+              </li>
+              <li>
+                <a href="#" title="사회공헌 페이지로 이동">사회공헌</a>
+              </li>
+              <li>
+                <a href="#" title="제휴/광고/부대사업문의 페이지로 이동">제휴/광고/부대사업문의</a>
+              </li>
+              <li>
+                <a href="#" title="이용약관 페이지로 이동">이용약관</a>
+              </li>
+              <li>
+                <a href="#" title="개인정보처리방침 페이지로 이동"><strong>개인정보처리방침</strong></a>
+              </li>
+              <li>
+                <a href="#" title="윤리경영 페이지로 이동">윤리경영</a>
+              </li>
+            </ul>
+            <div class="footer_bottom">
+              <div class="footer_logo">
+                <img src="images/white_logo.png" alt="white_logo">
+              </div>
+              <address>
+                <p>
+                  서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 메가박스스퀘어) ARS 1544-0070<br>
+                  대표자명 김진선 · 개인정보보호책임자 조상연 · 사업자등록번호 211-86-59478 · 통신판매업신고번호 제 833호<br>
+                  COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved
+                </p>
+              </address>
+            </div>
+          </div>
+          <div class="footer_right fl_right">
+            <div class="footer_search">
+              <a href="#">
+                <img src="images/search_02.png" alt="search">
+                극장찾기
+              </a>
+            </div>
+            <ul class="footer_sns">
+              <li>
+                <a href="#" title="MEGABOX 트위터로 이동">
+                  <img src="images/twiter.png" alt="twiter">
+                </a>
+              </li>
+              <li>
+                <a href="#" title="MEGABOX 페이스북으로 이동">
+                  <img src="images/facebook.png" alt="facebook">
+                </a>
+              </li>
+              <li>
+                <a href="#" title="MEGABOX 인스타그램으로 이동">
+                  <img src="images/instagram.png" alt="instagram">
+                </a>
+              </li>
+              <li>
+                <a href="#" title="MEGABOX 구글플레이로 이동">
+                  <img src="images/googleplay.png" alt="googleplay">
+                </a>
+              </li>
+              <li>
+                <a href="#" title="MEGABOX 앱스토어로 이동">
+                  <img src="images/appstore.png" alt="appstore">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
   </div>
 </body>

@@ -1,0 +1,150 @@
+@charset 'utf-8';
+
+/* movie chart */
+.swiper-container{
+  margin-bottom:50px;
+}
+.poster{
+  overflow:hidden;
+  position:relative;
+  border-radius:5px;
+  margin-bottom:7px;
+}
+.poster>img{
+  width:100%;
+}
+.poster>.poster_number{
+  position:absolute;
+  left:20px;
+  top:20px;
+  /* z-index:1; */
+  font-weight:bold;
+  font-size:30px;
+  color:white;
+  text-shadow:1px 1px 1px black;
+}
+.poster>.poster_txt{
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  padding:20px;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  opacity:0;
+  transition:0.2s;
+}
+.poster:hover>.poster_txt{
+  opacity:1;
+}
+.poster>.poster_txt>p{
+  line-height:20px;
+}
+.poster>.poster_txt>p:first-child{
+  height:80%;
+  border-bottom:1px solid white;
+}
+.poster>.poster_txt>p:last-child{
+  height:20%;
+  padding:0 50px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+.poster>.poster_txt>p>span{
+  font-size:24px;
+  color:#59bec9;
+}
+.poster_btn{
+  color:white;
+}
+.poster_btn>div{
+  border-radius:5px;
+  box-sizing:border-box;
+  text-align:center;
+}
+.poster_btn>div:first-child{
+  display:flex;
+  justify-content:space-between;
+  width:32%;
+  padding:8px 14px;
+  border:1px solid #555;
+  background:#0c0a0a;
+}
+.poster_btn>div:first-child>span{
+  text-indent:-9999px;
+  width:17px;
+  height:15px;
+  background-image:url('../images/heart.png');
+  background-repeat:no-repeat;
+}
+.poster_btn>div:last-child{
+  width:65%;
+  background:#037b94;
+  padding:10px;
+}
+.quick_movie_menu{
+  display:flex;
+  align-items:center;
+  height:80px;
+  background:rgba(0,0,0,0.5);
+}
+.quick_movie_menu>li{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  border-right:1px solid white;
+}
+.quick_movie_menu>li:nth-child(4){
+  border-right:none;
+}
+.quick_movie_menu>li>a{
+  font-size:16px;
+  padding:10px 0 10px 30px;
+  color:white;
+  background-repeat:no-repeat;
+  background-position:left;
+}
+.quick_movie_menu>li>a:hover{
+  text-decoration:underline;
+}
+.quick_movie_menu>li:nth-child(2)>a{
+  background-image:url('../images/schedule_02.png');
+}
+.quick_movie_menu>li:nth-child(3)>a{
+  background-image:url('../images/boxoffice.png');
+}
+.quick_movie_menu>li:nth-child(4)>a{
+  padding-left:36px;
+  background-image:url('../images/reserve.png');
+}
+.quick_movie_menu>li>input{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid white;
+  padding:10px 30px 10px 0;
+  color:white;
+  background-image:url('../images/search.png');
+  background-repeat:no-repeat;
+  background-position:right;
+}
+.mouse_ani{
+  position:relative;
+}
+.mouse_ani>img{
+  position:absolute;
+  top:30px;
+  left:50%;
+  transform:translateX(-50%);
+  animation-name:mmove;
+  animation-delay:2s;
+  animation-duration:3s;
+  animation-iteration-count:infinite;
+}
+@keyframes mmove{
+  0%{top:30px;}
+  40%{top:60px;}
+  60%{top:60px;}
+  100%{top:30px;}
+}

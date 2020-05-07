@@ -59,3 +59,14 @@ input,select,textarea,button{
 .border_none{
   border:none;
 }
+
+.wrap{
+  position:relative;
+  width:100%;
+  max-width:2000px;
+  margin:0 auto;
+}
+.container{
+  width:1100px;
+  margin:0 auto;
+}

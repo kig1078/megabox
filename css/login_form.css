@@ -1,0 +1,95 @@
+@charset 'utf-8';
+
+/* login_form */
+.login_form{
+  display:none;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:3;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+}
+.login_form .content{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:500px;
+  height:420px;
+  background:white;
+}
+.login_form .login_tit{
+  padding:12px 24px;
+  background:#330a94;
+}
+.login_form .login_tit p{
+  font-size:18px;
+  color:white;
+}
+.login_form .login_tit img{
+  cursor:pointer;
+}
+.login_form form{
+  padding:12px 24px;
+}
+.login_form form .id_pass{
+  box-sizing:border-box;
+  width:100%;
+  border:1px solid #999;
+  margin:20px 0;
+  padding:12px;
+  font-weight:bold;
+  color:#330a94;
+}
+.login_form form .id_pass:hover{
+  border:1px solid #333;
+}
+.login_form form .id_pass::placeholder{
+  font-weight:bold;
+  color:#330a94;
+}
+.login_form form input[type="checkbox"],.login_form form label{
+  display:inline-block;
+  margin-bottom:16px;
+}
+.login_form form input[type="button"]{
+  width:100%;
+  border-radius:2px;
+  padding:12px;
+  background-color:#330a94;
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.login_form .login_menu{
+  padding:12px 20px;
+  display:flex;
+  flex-flow:row nowrap;
+  justify-content:center;
+}
+.login_form .login_menu li{
+  margin:0 10px;
+}
+.login_form .login_menu li a{
+  color:#999
+}
+.login_form .login_menu li a:hover{
+  color:#333;
+  text-decoration:underline;
+}
+.login_form .login_menu li:nth-child(2n){
+  width:1px;
+  background:gray;
+}
+.login_form .sns_login{
+  padding:12px 20px;
+  display:grid;
+  grid-template-columns:auto auto auto auto;
+  grid-column-gap:20px;
+}
+.login_form .sns_login li{
+  text-align:center;
+}

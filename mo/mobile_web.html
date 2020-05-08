@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 제작자 -->
+  <meta name="author" content="hong">
+  <!-- 설명 -->
+  <meta name="description" content="메가박스 사이트입니다.">
+  <!-- 키워드 -->
+  <meta name="keywords" content="메가박스, megabox, 영화, movie">
+  <!-- 링크공유 -->
+  <meta property="og:title" content="메가박스">
+  <meta property="og:url" content="https://kig1078.github.io/megabox">
+  <meta property="og:image" content="../images/M.png">
+  <meta property="og:description" content="최고의 감동 메가박스와 함께 하세요">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="../images/favicon.png">
+  <!-- jQuery -->
+  <script src="../js/jquery-3.5.0.js"></script>
+  <script src="../js/jquery-3.5.0.min.js"></script>
+  <!-- swiper -->
+  <link rel="stylesheet" href="../css/swiper.min.css">
+  <script src="../js/swiper.min.js"></script>
+  <!-- reset -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <script>
+    $(function(){
+      $('#ticket_btn,#alarm_btn,#login_txt').click(function(){
+        var conFirm=confirm('로그인후 이용가능 합니다.\n로그인 하시겠습니까?');
+        if(conFirm){
+          $('.static_menu,.wrap,.burger_menu').hide();
+          $('.login_form').show();
+        }
+      });
+
+      $(window).scroll(function(){
+        var scrTop=$(window).scrollTop();
+        if(scrTop>30){
+          $('.static_top').css('background-color','rgba(0,0,0,0.8)');
+        }else{
+          $('.static_top').css('background-color','rgba(0,0,0,0)');
+        }
+      });
+
+      $('#close_btn,#burger_close').click(function(){
+        $('.login_form').hide();
+        $('.burger_menu').hide();
+        $('.static_menu,.wrap').show();
+      });
+
+      // 서브멤버 토글
+      $('#member_btn').click(function(){
+        $('.member_sub').toggle();
+        var tmp=$('.member_sub').css('display');
+        if(tmp=='block'){
+          $('.center').addClass('active_padding');
+        }else{
+          $('.center').removeClass('active_padding');
+        }
+      });
+
+      // menu_btn
+      $('#toggle_btn').click(function(){
+        $('.burger_menu').css('display','flex');
+      })
+    })
+  </script>
+  <!-- static_bar_style -->
+  <style>
+    .static_top,.static_bottom{
+      position:fixed;
+      left:0;
+      z-index:9999;
+      display:flex;
+      justify-content:space-between;
+      box-sizing:border-box;
+      width:100%;
+      padding:16px;       
+    }
+    .static_top{
+      top:0;
+      padding-bottom:3px;
+      transition:0.1s;
+    }
+    .static_top>li:nth-child(1){
+      width:30px;
+    }
+    .static_top>li:nth-child(2){
+      margin-top:-12px;
+      width:120px;
+    }
+    .static_top>li:nth-child(3) img{
+      width:30px;
+    }
+    .static_top>li img{
+      width:100%;
+    }
+    .static_bottom{
+      bottom:0;
+    }
+    .wrap{
+      height:1000px;
+      background:violet;
+    }
+  </style>
+  <!-- mobile_base_style -->
+  <style>
+    *{
+      box-sizing:border-box;
+      color:#333;
+    }
+    body{
+      overflow:scroll;
+      -ms-overflow-style:none;
+      /* 나중에 지울것 */
+      overflow:hidden;
+    }
+    body::-webkit-scrollbar{
+      display:none;
+    }
+    .container01, .container02{
+      width:100%;
+      padding:0 16px;
+    }
+    .container02{
+      padding:0 0 0 16px;
+    }
+  </style>
+  <!-- login_form_style -->
+  <style>
+    .login_form{
+      display:none;
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      z-index:10000;
+      background:white;
+    }
+    .login_tit{
+      display:flex;
+      justify-content:space-between;
+      padding:10px 0;
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      background:white;
+    }
+    .login_tit p{
+      font-size:20px;
+      margin:0 auto;
+    }
+    .login_tit img{
+      width:26px;
+    }
+    .login_content{
+      padding-top:100px;
+    }
+    .id_pass{
+      width:100%;
+      margin-bottom:20px;
+      border-top:none;
+      border-right:none;
+      border-left:none;
+      padding:10px 0;
+    }
+    .id_pass::placeholder{
+      color:rgba(0,0,0,0.5);
+    }
+    .id_save{
+      display:flex;
+    }
+    .id_save input{
+      display:none;
+    }
+    .id_save label{
+      font-size:15px;
+      line-height:20px;
+      margin-left:5px;
+      color:#333;
+    }
+    .id_save>.check_box::before{
+      content:'';
+      display:inline-block;
+      width:20px;
+      height:20px;
+      background-image:url('images/check_icon.png');
+      background-size:cover;
+      background-position:left;
+    }
+    #save_id:checked~.check_box::before{
+      background-position:right;
+    }
+    input[value="로그인"]{
+      width:100%;
+      padding:16px;
+      margin:40px 0 20px 0;
+      font-size:18px;
+      color:white;
+      background:#6437bf;
+      border:none;
+      cursor:pointer;
+    }
+    .login_search, .login_sns{
+      width:70%;
+      margin:30px auto;
+      display:flex;
+      justify-content:space-between;
+    }
+    .login_sns>li{
+      width:40px;
+    }
+    .login_sns img{
+      width:100%;
+    }
+  </style>
+  <!-- burger_menu_style -->
+  <style>
+    .burger_menu{
+      overflow:scroll;
+      -ms-overflow-style:none;
+      position:fixed;
+      left:0;
+      top:0;
+      z-index:10000;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.7);
+      display:none;
+      justify-content:flex-end;
+    }
+    .burger_menu::-webkit-scrollbar{
+      display:none;
+    }
+    .burger_menu>nav{
+      width:320px;
+      height:100%;
+      background:white;
+    }
+    .nav_top{
+      position:fixed;
+      right:0;
+      top:0;
+      width:320px;
+      background-color:#160f2b;
+    }
+    .nav_header, .nav_join{
+      display:flex;
+      align-items:center;
+      padding:10px 20px 30px;
+    }
+    .nav_header>p{
+      font-size:16px;
+      color:white;
+      flex:8;
+    }
+    .nav_header>p>span{
+      font-size:16px;
+      color:white;
+      display:inline-block;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+    .nav_header>a{
+      flex:1;
+    }
+    .nav_header img{
+      width:100%;
+    }
+    .nav_join{
+      border-top:1px solid rgba(255,255,255,0.5);
+      padding:16px 0;
+    }
+    .nav_join>a{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:rgba(255,255,255,0.5);
+    }
+    .nav_join>a>img{
+      width:16px;
+      margin-right:5px;
+    }
+    .nav_join>a:nth-child(1){
+      flex:2;
+    }
+    .nav_join>a:nth-child(2){
+      flex:3;
+    }
+    .nav_content{
+      padding:130px 0;
+    }
+    .nav_quick_icon{
+      display:flex;
+      flex-flow:row wrap;
+    }
+    .nav_quick_icon>li{
+      width:33.3333333333333%;
+      text-align:center;
+      padding:20px 0;
+    }
+    .nav_quick_icon>li img{
+      border:1px solid rgba(0,0,0,0.2);
+      border-radius:50%;
+      width:60px;
+      padding:10px;
+      margin-bottom:6px;
+    }
+    .nav_list{
+      background-color:white;
+    }
+    .nav_list>li{
+      border-top:1px solid rgba(0,0,0,0.2);
+      padding:16px;
+    }
+    .nav_list>li:last-child>a{
+      color:#14b9cb;
+      display:flex;
+      align-items:center;
+    }
+    .nav_list>li:last-child>a::before{
+      content:'';
+      display:inline-block;
+      width:20px;
+      height:20px;
+      background-image:url('images/menu_notice.png');
+      background-size:cover;
+    }
+    .nav_list a{
+      display:inline-block;
+      color:rgba(0,0,0,0.8);
+      width:100%;
+      height:100%;
+    }
+    #member_btn{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    #member_btn::after{
+      content:'';
+      display:block;
+      width:20px;
+      height:20px;
+      background-image:url('images/menu_off_btn.png');
+      background-size:cover;
+    }
+    .member_main{
+      position:relative;
+    }
+    .member_sub{
+      display:none;
+      position:absolute;
+      left:0;
+      top:100%;
+      width:100%;
+      padding:10px;
+      background-color:#f5f5f5;
+    }
+    .member_sub>li{
+      padding:10px 0;
+    }
+    .nav_bottom{
+      position:fixed;
+      right:0;
+      bottom:0;
+      width:320px;
+    }
+    .nav_bottom img{
+      width:100%;
+    }
+    .active_padding{
+      padding-top:140px !important;
+    }
+  </style>
+
+  <title>라이프시어터, 메가박스</title>
+</head>
+<body>
+  <div class="login_form">
+    <div class="container01">
+      <form>
+        <div class="login_tit">
+          <p>로그인</p>
+          <img id="close_btn" src="images/close_icon.png" alt="close_icon">
+        </div>
+        <div class="login_content">
+          <input type="text" placeholder="아이디" class="id_pass">
+          <input type="password" placeholder="비밀번호" class="id_pass">
+          <div class="id_save">
+            <input type="checkbox" id="save_id">
+            <span class="check_box"></span>
+            <label for="save_id">아이디 저장</label>
+          </div>
+          <input type="button" value="로그인">
+          <ul class="login_search">
+            <li><a href="#">ID/PW찾기</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">비회원 예매확인</a></li>
+          </ul>
+          <ul class="login_sns">
+            <li>
+              <a href="#">
+                <img src="images/facebook_icon.png" alt="facebook_icon">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/naver_icon.png" alt="naver_icon">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/kakao_icon.png" alt="kakao_icon">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/payco_icon.png" alt="payco_icon">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="burger_menu">
+    <nav>
+      <div class="nav_top">
+        <div class="nav_header">
+          <p><span id="login_txt">로그인</span>후 이용하세요 !</p>
+          <a href="mobile_web.html"><img src="images/menu_home.png" alt="menu_home_btn"></a>
+          <a href="#" onclick="return false"><img id="burger_close" src="images/close_white.png" alt="close_btn"></a>
+        </div>
+        <div class="nav_join">
+          <a href="#">
+            <img src="images/menu_join.png" alt="menu_join">회원가입
+          </a>
+          <a href="#">
+            <img src="images/menu_ticketing.png" alt="menu_ticketing">비회원 예매확인
+          </a>
+        </div>
+      </div>
+      <div class="nav_content">
+        <ul class="nav_quick_icon">
+          <li>
+            <a href="#">
+              <img src="images/menu_movie.png" alt="menu_movie">
+              <span>영화별 예매</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/menu_reserve.png" alt="menu_reserve">
+              <span>극장별 예매</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/menu_mymega.png" alt="menu_mymega">
+              <span>나의 메가박스</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/menu_post.png" alt="menu_post">
+              <span>영화</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/menu_store.png" alt="menu_store">
+              <span>스토어</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="images/menu_event.png" alt="menu_event">
+              <span>이벤트</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav_list">
+          <li>
+            <a href="#">극장안내</a>
+          </li>
+          <li>
+            <a href="#">무비포스트</a>
+          </li>
+          <li>
+            <a href="#">더 부티크 프라이빗 예매</a>
+          </li>
+          <li>
+            <a href="#">제휴/할인 안내</a>
+          </li>
+          <li class="member_main">
+            <a href="#" id="member_btn">멤버십안내</a>
+            <ul class="member_sub">
+              <li><a href="#">· 스페셜 멤버십</a></li>
+              <li><a href="#">· 멤버십 안내</a></li>
+              <li><a href="#">· VIP LOUNGE</a></li>
+            </ul>
+          </li>
+          <li class="center">
+            <a href="#">고객센터</a>
+          </li>
+          <li>
+            <a href="#">[공지][카카오페이] 국민카드 전산시스템...</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav_bottom">
+        <a href="#">
+          <img src="images/menu_banner.jpg" alt="menu_banner">
+        </a>
+      </div>
+    </nav>
+  </div>
+  <div class="static_menu">
+    <ul class="static_top">
+      <li>
+        <a href="#">
+          <img id="ticket_btn" src="images/ticket.png" alt="ticket">
+        </a>
+      </li>
+      <li>
+        <a href="mobile_web.html">
+          <img src="images/main_logo.png" alt="main_logo">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img id="alarm_btn" src="images/alarm.png" alt="alarm">
+          <img id="toggle_btn" src="images/menu.png" alt="menu">
+        </a>
+      </li>
+    </ul>
+    <ul class="static_bottom">
+      <li>
+        <a href="#">
+          <img src="images/movie_icon.png" alt="movie_icon">
+          <img src="images/movie_active.png" alt="movie_active">
+          <p>예매</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="images/store_icon.png" alt="store_icon">
+          <img src="images/store_active.png" alt="store_active">
+          <p>스토어</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="images/reserve_icon.png" alt="reserve_icon">
+          <img src="images/reserve_active.png" alt="reserve_active">
+          <p>영화</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="images/event_icon.png" alt="event_icon">
+          <img src="images/event_active.png" alt="event_active">
+          <p>이벤트</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="images/mymega_icon.png" alt="mymega_icon">
+          <img src="images/mymega_active.png" alt="mymega_active">
+          <p>MY</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="wrap">
+
+  </div>
+</body>
+</html>

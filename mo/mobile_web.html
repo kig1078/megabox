@@ -24,358 +24,21 @@
   <script src="../js/swiper.min.js"></script>
   <!-- reset -->
   <link rel="stylesheet" href="../css/reset.css">
-  <script>
-    $(function(){
-      $('#ticket_btn,#alarm_btn,#login_txt').click(function(){
-        var conFirm=confirm('로그인후 이용가능 합니다.\n로그인 하시겠습니까?');
-        if(conFirm){
-          $('.static_menu,.wrap,.burger_menu').hide();
-          $('.login_form').show();
-        }
-      });
-
-      $(window).scroll(function(){
-        var scrTop=$(window).scrollTop();
-        if(scrTop>30){
-          $('.static_top').css('background-color','rgba(0,0,0,0.8)');
-        }else{
-          $('.static_top').css('background-color','rgba(0,0,0,0)');
-        }
-      });
-
-      $('#close_btn,#burger_close').click(function(){
-        $('.login_form').hide();
-        $('.burger_menu').hide();
-        $('.static_menu,.wrap').show();
-      });
-
-      // 서브멤버 토글
-      $('#member_btn').click(function(){
-        $('.member_sub').toggle();
-        var tmp=$('.member_sub').css('display');
-        if(tmp=='block'){
-          $('.center').addClass('active_padding');
-        }else{
-          $('.center').removeClass('active_padding');
-        }
-      });
-
-      // menu_btn
-      $('#toggle_btn').click(function(){
-        $('.burger_menu').css('display','flex');
-      })
-    })
-  </script>
-  <!-- static_bar_style -->
-  <style>
-    .static_top,.static_bottom{
-      position:fixed;
-      left:0;
-      z-index:9999;
-      display:flex;
-      justify-content:space-between;
-      box-sizing:border-box;
-      width:100%;
-      padding:16px;       
-    }
-    .static_top{
-      top:0;
-      padding-bottom:3px;
-      transition:0.1s;
-    }
-    .static_top>li:nth-child(1){
-      width:30px;
-    }
-    .static_top>li:nth-child(2){
-      margin-top:-12px;
-      width:120px;
-    }
-    .static_top>li:nth-child(3) img{
-      width:30px;
-    }
-    .static_top>li img{
-      width:100%;
-    }
-    .static_bottom{
-      bottom:0;
-    }
-    .wrap{
-      height:1000px;
-      background:violet;
-    }
-  </style>
-  <!-- mobile_base_style -->
-  <style>
-    *{
-      box-sizing:border-box;
-      color:#333;
-    }
-    body{
-      overflow:scroll;
-      -ms-overflow-style:none;
-      /* 나중에 지울것 */
-      overflow:hidden;
-    }
-    body::-webkit-scrollbar{
-      display:none;
-    }
-    .container01, .container02{
-      width:100%;
-      padding:0 16px;
-    }
-    .container02{
-      padding:0 0 0 16px;
-    }
-  </style>
-  <!-- login_form_style -->
-  <style>
-    .login_form{
-      display:none;
-      position:absolute;
-      left:0;
-      top:0;
-      width:100%;
-      z-index:10000;
-      background:white;
-    }
-    .login_tit{
-      display:flex;
-      justify-content:space-between;
-      padding:10px 0;
-      position:fixed;
-      left:0;
-      top:0;
-      width:100%;
-      background:white;
-    }
-    .login_tit p{
-      font-size:20px;
-      margin:0 auto;
-    }
-    .login_tit img{
-      width:26px;
-    }
-    .login_content{
-      padding-top:100px;
-    }
-    .id_pass{
-      width:100%;
-      margin-bottom:20px;
-      border-top:none;
-      border-right:none;
-      border-left:none;
-      padding:10px 0;
-    }
-    .id_pass::placeholder{
-      color:rgba(0,0,0,0.5);
-    }
-    .id_save{
-      display:flex;
-    }
-    .id_save input{
-      display:none;
-    }
-    .id_save label{
-      font-size:15px;
-      line-height:20px;
-      margin-left:5px;
-      color:#333;
-    }
-    .id_save>.check_box::before{
-      content:'';
-      display:inline-block;
-      width:20px;
-      height:20px;
-      background-image:url('images/check_icon.png');
-      background-size:cover;
-      background-position:left;
-    }
-    #save_id:checked~.check_box::before{
-      background-position:right;
-    }
-    input[value="로그인"]{
-      width:100%;
-      padding:16px;
-      margin:40px 0 20px 0;
-      font-size:18px;
-      color:white;
-      background:#6437bf;
-      border:none;
-      cursor:pointer;
-    }
-    .login_search, .login_sns{
-      width:70%;
-      margin:30px auto;
-      display:flex;
-      justify-content:space-between;
-    }
-    .login_sns>li{
-      width:40px;
-    }
-    .login_sns img{
-      width:100%;
-    }
-  </style>
-  <!-- burger_menu_style -->
-  <style>
-    .burger_menu{
-      overflow:scroll;
-      -ms-overflow-style:none;
-      position:fixed;
-      left:0;
-      top:0;
-      z-index:10000;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.7);
-      display:none;
-      justify-content:flex-end;
-    }
-    .burger_menu::-webkit-scrollbar{
-      display:none;
-    }
-    .burger_menu>nav{
-      width:320px;
-      height:100%;
-      background:white;
-    }
-    .nav_top{
-      position:fixed;
-      right:0;
-      top:0;
-      width:320px;
-      background-color:#160f2b;
-    }
-    .nav_header, .nav_join{
-      display:flex;
-      align-items:center;
-      padding:10px 20px 30px;
-    }
-    .nav_header>p{
-      font-size:16px;
-      color:white;
-      flex:8;
-    }
-    .nav_header>p>span{
-      font-size:16px;
-      color:white;
-      display:inline-block;
-      text-decoration:underline;
-      cursor:pointer;
-    }
-    .nav_header>a{
-      flex:1;
-    }
-    .nav_header img{
-      width:100%;
-    }
-    .nav_join{
-      border-top:1px solid rgba(255,255,255,0.5);
-      padding:16px 0;
-    }
-    .nav_join>a{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:rgba(255,255,255,0.5);
-    }
-    .nav_join>a>img{
-      width:16px;
-      margin-right:5px;
-    }
-    .nav_join>a:nth-child(1){
-      flex:2;
-    }
-    .nav_join>a:nth-child(2){
-      flex:3;
-    }
-    .nav_content{
-      padding:130px 0;
-    }
-    .nav_quick_icon{
-      display:flex;
-      flex-flow:row wrap;
-    }
-    .nav_quick_icon>li{
-      width:33.3333333333333%;
-      text-align:center;
-      padding:20px 0;
-    }
-    .nav_quick_icon>li img{
-      border:1px solid rgba(0,0,0,0.2);
-      border-radius:50%;
-      width:60px;
-      padding:10px;
-      margin-bottom:6px;
-    }
-    .nav_list{
-      background-color:white;
-    }
-    .nav_list>li{
-      border-top:1px solid rgba(0,0,0,0.2);
-      padding:16px;
-    }
-    .nav_list>li:last-child>a{
-      color:#14b9cb;
-      display:flex;
-      align-items:center;
-    }
-    .nav_list>li:last-child>a::before{
-      content:'';
-      display:inline-block;
-      width:20px;
-      height:20px;
-      background-image:url('images/menu_notice.png');
-      background-size:cover;
-    }
-    .nav_list a{
-      display:inline-block;
-      color:rgba(0,0,0,0.8);
-      width:100%;
-      height:100%;
-    }
-    #member_btn{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    #member_btn::after{
-      content:'';
-      display:block;
-      width:20px;
-      height:20px;
-      background-image:url('images/menu_off_btn.png');
-      background-size:cover;
-    }
-    .member_main{
-      position:relative;
-    }
-    .member_sub{
-      display:none;
-      position:absolute;
-      left:0;
-      top:100%;
-      width:100%;
-      padding:10px;
-      background-color:#f5f5f5;
-    }
-    .member_sub>li{
-      padding:10px 0;
-    }
-    .nav_bottom{
-      position:fixed;
-      right:0;
-      bottom:0;
-      width:320px;
-    }
-    .nav_bottom img{
-      width:100%;
-    }
-    .active_padding{
-      padding-top:140px !important;
-    }
-  </style>
-
+  <!-- java Script -->
+  <script src="js/mo.js"></script>
+  <!-- CSS link -->
+  <link rel="stylesheet" href="css/mobile_base_style.css">
+  <link rel="stylesheet" href="css/static_bar_style.css">
+  <link rel="stylesheet" href="css/login_form_style.css">
+  <link rel="stylesheet" href="css/burger_menu_style.css">
+  <link rel="stylesheet" href="css/main_poster_style.css">
+  <link rel="stylesheet" href="css/hot_clip_style.css">
+  <link rel="stylesheet" href="css/mega_news_style.css">
+  <link rel="stylesheet" href="css/mega_event_style.css">
+  <link rel="stylesheet" href="css/special_list_style.css">
+  <link rel="stylesheet" href="css/movie_post_style.css">
+  <link rel="stylesheet" href="css/footer_style.css">
+  
   <title>라이프시어터, 메가박스</title>
 </head>
 <body>
@@ -538,35 +201,35 @@
       </li>
     </ul>
     <ul class="static_bottom">
-      <li>
+      <li class="static_bottom_btn">
         <a href="#">
-          <img src="images/movie_icon.png" alt="movie_icon">
-          <img src="images/movie_active.png" alt="movie_active">
+          <img class="movie_img" src="images/movie_icon.png" alt="movie_icon">
+          <img class="movie_img" src="images/movie_active.png" alt="movie_active">
           <p>예매</p>
         </a>
       </li>
-      <li>
+      <li class="static_bottom_btn">
         <a href="#">
-          <img src="images/store_icon.png" alt="store_icon">
-          <img src="images/store_active.png" alt="store_active">
+          <img class="store_img" src="images/store_icon.png" alt="store_icon">
+          <img class="store_img" src="images/store_active.png" alt="store_active">
           <p>스토어</p>
         </a>
       </li>
-      <li>
+      <li class="static_bottom_btn">
         <a href="#">
-          <img src="images/reserve_icon.png" alt="reserve_icon">
-          <img src="images/reserve_active.png" alt="reserve_active">
+          <img class="reserve_img" src="images/reserve_icon.png" alt="reserve_icon">
+          <img class="reserve_img" src="images/reserve_active.png" alt="reserve_active">
           <p>영화</p>
         </a>
       </li>
-      <li>
+      <li class="static_bottom_btn">
         <a href="#">
-          <img src="images/event_icon.png" alt="event_icon">
-          <img src="images/event_active.png" alt="event_active">
+          <img class="event_img" src="images/event_icon.png" alt="event_icon">
+          <img class="event_img" src="images/event_active.png" alt="event_active">
           <p>이벤트</p>
         </a>
       </li>
-      <li>
+      <li class="static_bottom_btn">
         <a href="#">
           <img src="images/mymega_icon.png" alt="mymega_icon">
           <img src="images/mymega_active.png" alt="mymega_active">
@@ -576,7 +239,948 @@
     </ul>
   </div>
   <div class="wrap">
-
+    <section class="section main">
+      <article class="container02">
+        <h2>
+          당신은 영화속 주인공처럼<br>
+          이 어려움도 이겨낼 거예요!
+        </h2>
+        <div class="swiper-container main_menu">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#" class="active">#박스오피스</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">#예정작</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">#단독</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">#명작리플레이</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">#필소</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">#클소</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">#폭스리플레이</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-container mobile_poster">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide00">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_00.jpg" alt="포스터00">
+                  <p><span class="age">12</span><span>톰보이</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>17.6%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>205</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  1
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide01">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_01.jpg" alt="포스터01">
+                  <p><span class="age">All</span><span>트롤:월드 투어</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>12.4%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D+2</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>503</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  2
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide02">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_02.jpg" alt="포스터02">
+                  <p><span class="age">12</span><span>레이니 데이 인 뉴욕</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>9.5%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>95</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  3
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide03">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_03.jpg" alt="포스터03">
+                  <p><span class="age">15</span><span>패왕별희 디 오리지널</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>9.5%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>854</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  4
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide04">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_04.jpg" alt="포스터04">
+                  <p><span class="age">12</span><span>프리즌 이스케이프</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>5.3%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-2</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>428</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  5
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide05">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_05.jpg" alt="포스터05">
+                  <p><span class="age">12</span><span>레미제라블:뮤지컬 콘서트</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>5.3%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-2</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>429</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  6
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide06">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_06.jpg" alt="포스터06">
+                  <p><span class="age">All</span><span>[오페라]마담 버터클라..</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>3.2%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D+5</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>28</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  7
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide07">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_07.jpg" alt="포스터07">
+                  <p><span class="age">12</span><span>저 산 너머</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>3.2%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D+4</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>84</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  8
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide08">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_08.jpg" alt="포스터08">
+                  <p><span class="age">12</span><span>[오페라]리골레토</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>3.1%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>259</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  9
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide09">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_09.jpg" alt="포스터09">
+                  <p><span class="age">12</span><span>라라랜드</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>17.6%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>205</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  10
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide10">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_10.jpg" alt="포스터10">
+                  <p><span class="age">15</span><span>날씨의 아이</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>1.8%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-1</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>5</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  11
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide11">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_11.jpg" alt="포스터11">
+                  <p><span class="age">12</span><span>이별의 아침에 약속의 꽃..</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>1.8%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D+9</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>85</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  12
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide12">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_12.jpg" alt="포스터12">
+                  <p><span class="age">18</span><span>[오페라]피델리오</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>1.8%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>21</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  13
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide13">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_13.jpg" alt="포스터13">
+                  <p><span class="age">18</span><span>1917</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>17.6%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-3</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>205</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  14
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide14">
+              <div class="mobile_poster_content">
+                <a href="#">
+                  <img src="images/mobile_poster_14.jpg" alt="포스터14">
+                  <p><span class="age">12</span><span>나의 청춘은 너의 것</span></p>
+                </a>
+                <ul>
+                  <li>
+                    <span>예매율</span>
+                    <p>1.7%</p>
+                  </li>
+                  <li>
+                    <span>개봉일</span>
+                    <p>D-0</p>
+                  </li>
+                  <li>
+                    <span>보고싶어</span>
+                    <p>290</p>
+                  </li>
+                </ul>
+                <div class="poster_num">
+                  15
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>     
+      </article>
+      <hr class="container02">
+    </section>
+    <section class="section hot_clip">
+      <article>
+        <h2 class="container01">핫클립</h2>
+        <div class="movie_clip active">
+          <video width="100%">
+            <source src="media/video_00.mp4">
+          </video>
+          <div class="play_btn active">
+            ▶
+          </div>
+          <div class="stop_btn">
+            ■
+          </div>
+          <p class="container01 movie_clip_txt">
+            <span>트롤: 월드 투어</span>
+            <span>글리터 Flex 힙합트롤 탄생! 세상의 모든 음악이 쏟아진다!</span>
+          </p>
+        </div>
+        <div class="movie_clip">
+          <video width="100%">
+            <source src="media/video_01.mp4">
+          </video>
+          <div class="play_btn active">
+            ▶
+          </div>
+          <div class="stop_btn">
+            ■
+          </div>
+          <p class="container01 movie_clip_txt">
+            <span>레이니 데이 인 뉴욕</span>
+            <span>우리는 가끔 로맨틱한 해프닝을 꿈꾼다.</span>
+          </p>
+        </div>
+        <div class="movie_clip">
+          <video width="100%">
+            <source src="media/video_02.mp4">
+          </video>
+          <div class="play_btn active">
+            ▶
+          </div>
+          <div class="stop_btn">
+            ■
+          </div>
+          <p class="container01 movie_clip_txt">
+            <span>콜 오브 와일드</span>
+            <span>올 해, 최고의 감동! 보지 않고서는 절대 믿을 수 없는 이야기</span>
+          </p>
+        </div>
+        <div class="movie_clip">
+          <video width="100%">
+            <source src="media/video_03.mp4">
+          </video>
+          <div class="play_btn active">
+            ▶
+          </div>
+          <div class="stop_btn">
+            ■
+          </div>
+          <p class="container01 movie_clip_txt">
+            <span>저 산 너머</span>
+            <span>위로와 희망, 감동의 메시지! 온 가족을 위한 힐링무비</span>
+          </p>
+        </div>
+        <div class="movie_clip">
+          <video width="100%">
+            <source src="media/video_04.mp4">
+          </video>
+          <div class="play_btn active">
+            ▶
+          </div>
+          <div class="stop_btn">
+            ■
+          </div>
+          <p class="container01 movie_clip_txt">
+            <span>호텔 레이크</span>
+            <span>달콤한 휴식이 악몽이 된 곳. 호텔 레이크에 오신 것을 환영합니다!</span>
+          </p>
+        </div>
+      </article>
+      <article class="small_movie_clip container02">
+        <div class="swiper-container swiper-container03">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <video width="100%">
+                <source src="media/video_01.mp4">
+              </video>
+              <div class="play_btn" id="play01">
+                ▶
+              </div>
+              <div class="stop_btn">
+                ■
+              </div>
+              <p class="container01 movie_clip_txt">
+                <span>트롤: 월드 투어</span>
+                <span>글리터 Flex 힙합트롤 탄생!</span>
+              </p>
+            </div>
+            <div class="swiper-slide">
+              <video width="100%">
+                <source src="media/video_01.mp4">
+              </video>
+              <div class="play_btn" id="play02">
+                ▶
+              </div>
+              <div class="stop_btn">
+                ■
+              </div>
+              <p class="container01 movie_clip_txt">
+                <span>레이니 데이 인 뉴욕</span>
+                <span>우리는 가끔 로맨틱한 ...</span>
+              </p>
+            </div>
+            <div class="swiper-slide">
+              <video width="100%">
+                <source src="media/video_02.mp4">
+              </video>
+              <div class="play_btn" id="play03">
+                ▶
+              </div>
+              <div class="stop_btn">
+                ■
+              </div>
+              <p class="container01 movie_clip_txt">
+                <span>콜 오브 와일드</span>
+                <span>올 해, 최고의 감동! 보지 ..</span>
+              </p>
+            </div>
+            <div class="swiper-slide">
+              <video width="100%">
+                <source src="media/video_03.mp4">
+              </video>
+              <div class="play_btn" id="play04">
+                ▶
+              </div>
+              <div class="stop_btn">
+                ■
+              </div>
+              <p class="container01 movie_clip_txt">
+                <span>저 산 너머</span>
+                <span>위로와 희망, 감동의 메시지!</span>
+              </p>
+            </div>
+            <div class="swiper-slide">
+              <video width="100%">
+                <source src="media/video_04.mp4">
+              </video>
+              <div class="play_btn" id="play05">
+                ▶
+              </div>
+              <div class="stop_btn">
+                ■
+              </div>
+              <p class="container01 movie_clip_txt">
+                <span>호텔 레이크</span>
+                <span>달콤한 휴식이 악몽이 된 곳.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div class="container01">
+        <hr>
+      </div>
+    </section>
+    <section class="section mega_news">
+      <article class="container01">
+        <h2>메가박스 소식</h2>
+        <div class="img">
+          <a href="#">
+            <img src="images/mega_news_01.jpg" alt="mega_news_01">
+          </a>
+        </div>
+        <div class="img">
+          <a href="#">
+            <img src="images/mega_news_02.jpg" alt="mega_news_02">
+          </a>
+        </div>
+        <div class="img">
+          <a href="#">
+            <img src="images/mega_news_03.jpg" alt="mega_news_03">
+          </a>
+        </div>
+        <div class="img">
+          <a href="#">
+            <img src="images/mega_news_04.jpg" alt="mega_news_04">
+          </a>
+        </div>
+      </article>
+      <div class="container01">
+        <hr>
+      </div> 
+    </section>
+    <section class="section movie_event">
+      <h2 class="container01">영화 이벤트</h2>
+      <div class="swiper-container swiper-container04">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_01.jpg" alt="event_img_01">
+            </div>
+            <p class="event_tit">호소다 마모루 기획전</p>
+            <p class="event_date">2020-05-14~2020-06-03</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_02.jpg" alt="event_img_02">
+            </div>
+            <p class="event_tit">[레미제라블: 뮤지컬 콘서트] 스페셜 엽서 증정...</p>
+            <p class="event_date">2020-05-13~2020-05-31</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_03.jpg" alt="event_img_03">
+            </div>
+            <p class="event_tit">20세기 폭스 리플레이</p>
+            <p class="event_date">2020-05-07~2020-05-31</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_04.jpg" alt="event_img_04">
+            </div>
+            <p class="event_tit">[이별의 아침에 약속의 꽃을 장식하자] 스페셜..</p>
+            <p class="event_date">2020-05-06~2020-05-19</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_05.jpg" alt="event_img_05">
+            </div>
+            <p class="event_tit">[트롤: 월드투어] 2주차 현장 경품 이벤트</p>
+            <p class="event_date">2020-05-06~2020-05-12</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_06.jpg" alt="event_img_06">
+            </div>
+            <p class="event_tit">[저 산 너머] 개봉기념 현장 할인 이벤트</p>
+            <p class="event_date">2020-04-30~2020-05-13</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_07.jpg" alt="event_img_07">
+            </div>
+            <p class="event_tit">[톰보이] 필름 소사이어티 굿즈 패키지 상영회</p>
+            <p class="event_date">2020-05-16~2020-05-17</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_07.jpg" alt="event_img_07">
+            </div>
+            <p class="event_tit">[톰보이] 필름 소사이어티 특별 GV 상영회</p>
+            <p class="event_date">2020-05-16~2020-05-16</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_08.jpg" alt="event_img_08">
+            </div>
+            <p class="event_tit">[레이니 데이 인 뉴욕] 로즈데이 로맨틱 굿즈..</p>
+            <p class="event_date">2020-05-14~2020-05-14</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_09.jpg" alt="event_img_09">
+            </div>
+            <p class="event_tit">[범털] 굿즈패키지 상영회</p>
+            <p class="event_date">2020-05-14~2020-05-14</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_10.jpg" alt="event_img_10">
+            </div>
+            <p class="event_tit">클래식 소사이어티 오페라 [마산 지점] 런칭..</p>
+            <p class="event_date">2020-05-12~2020-06-14</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_11.jpg" alt="event_img_11">
+            </div>
+            <p class="event_tit">[레이니 데이 인 뉴욕] 현장 경품 이벤트</p>
+            <p class="event_date">2020-05-09~2020-05-20</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_12.jpg" alt="event_img_12">
+            </div>
+            <p class="event_tit">[킹 오브 프리즘 올스타즈-프리즘 쇼...</p>
+            <p class="event_date">2020-05-07~2020-05-13</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_13.jpg" alt="event_img_31">
+            </div>
+            <p class="event_tit">[MET 오페라] 시즌 2020 라인업</p>
+            <p class="event_date">2020-04-16~2020-12-31</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_14.jpg" alt="event_img_14">
+            </div>
+            <p class="event_tit">[유니텔 오페라] 시즌 2020 라인업</p>
+            <p class="event_date">2020-02-17~2020-12-31</p>
+          </div>
+          <div class="swiper-slide">
+            <div class="img">
+              <img src="images/event_img_15.jpg" alt="event_img_15">
+            </div>
+            <p class="event_tit">클래식 소사이어티 [2020 시네 도슨트]</p>
+            <p class="event_date">2020-02-01~2020-12-31</p>
+          </div>
+        </div>
+      </div>
+      <div class="container01">
+        <hr>
+      </div>
+    </section>
+    <section class="section special">
+      <div class="container01">
+        <h2>특별관</h2>
+        <ul class="special_list">
+          <li>
+            <a href="#">
+              <div class="special_img special_img01"></div>
+              <p>THE<br>BOUTIQUE</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="special_img special_img02"></div>
+              <p>MX</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="special_img special_img03"></div>
+              <p>COMFORT</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="special_img special_img04"></div>
+              <p>MEGABOX<br>KIDS</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="special_img special_img05"></div>
+              <p>THE FIRST<br>CLUB</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section movie_post">
+      <div class="container01">
+        <h2>무비 포스트</h2>
+        <p class="movie_post_txt">
+          영화관람 하셨나요?<br>
+          나만의 무비포스트를 남겨보세요.
+        </p>
+      </div>
+      <div class="swiper-container swiper-container05">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_01.jpg" alt="post_img_01">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">zerocapl**</p>
+                <p class="post_tit">날씨의아이</p>
+                <p class="post_txt">ㄲㅈ</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_02.jpg" alt="post_img_02">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">man96**</p>
+                <p class="post_tit">레이니 데이 인..</p>
+                <p class="post_txt">
+                  간만에 연애하는 기분<br>
+                  으로 즐겁게 봤네요<br>
+                  뉴욕한번 가봤으면 ㅎ
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_03.jpg" alt="post_img_03">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">chan2k29**</p>
+                <p class="post_tit">레이니 데이 인..</p>
+                <p class="post_txt">
+                  지겹다 생각해온 뉴욕<br>
+                  에서 일어난 고마운<br>
+                  해프닝
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_04.jpg" alt="post_img_04">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">skdks09**</p>
+                <p class="post_tit">트롤: 월드 투어</p>
+                <p class="post_txt">
+                  둠칫둠칫
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_05.jpg" alt="post_img_05">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">winner87**</p>
+                <p class="post_tit">트롤: 월드 투어</p>
+                <p class="post_txt">
+                  노래만 잘 듣다<br>
+                  갑니다
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_06.jpg" alt="post_img_06">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">jj9125101**</p>
+                <p class="post_tit">트롤: 월드 투어</p>
+                <p class="post_txt">
+                  아이들과 함께 지루할<br>
+                  틈 없이 시끌벅적하고<br>
+                  재미있게 잘 봤어요.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_07.jpg" alt="post_img_07">
+              </div>
+                <div class="post_txt_box">
+                <p class="post_id">jioji**</p>
+                <p class="post_tit">알리타: 배틀 엔젤</p>
+                <p class="post_txt">
+                  매력적인 주인공!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_08.jpg" alt="post_img_08">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">robot5**</p>
+                <p class="post_tit">알리타: 배틀 엔젤</p>
+                <p class="post_txt">
+                  3D로 다시 한번 보고<br>
+                  싶은 영화..
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_09.jpg" alt="post_img_09">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">biyotte**</p>
+                <p class="post_tit">알리타: 배틀 엔젤</p>
+                <p class="post_txt">
+                  여주 너쫌 기엽다?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="movie_post_content">
+              <div class="post_img">
+                <img src="images/post_img_10.jpg" alt="post_img_10">
+              </div>
+              <div class="post_txt_box">
+                <p class="post_id">72pinkp**</p>
+                <p class="post_tit">트롤: 월드 투어</p>
+                <p class="post_txt">
+                  웬디언니 더빙 너무<br>
+                  잘했어요♥
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <ul class="footer_menu">
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">고객센터</a></li>
+        <li><a href="#">PC버전</a></li>
+      </ul>
+      <p>
+        서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 메가박스크퀘어)
+        <br>
+        대표자 김진선·개인정보보호책임자 조상연
+        <br>
+        사업자등록번호 211-86-59478· 통신판매업신고번호 제 833호
+        <br>
+        <br>
+        ⓒ MegaboxJoonAng. Inc
+      </p>
+    </footer>
   </div>
 </body>
 </html>

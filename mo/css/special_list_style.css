@@ -1,0 +1,35 @@
+@charset 'uth-8';
+
+/* special_list_style */
+.special_list{
+  display:flex;
+  justify-content:space-between;
+  width:420px;
+}
+.special_list .special_img{
+  width:60px;
+  height:60px;
+  margin:20px 0 10px;
+  background-image:url('images/icon_set.png');
+  background-size:334px 192px;
+  background-position-y:-85px;
+}
+.special_list .special_img02{
+  background-position-x:-62px;
+}
+.special_list .special_img03{
+  background-position-x:-124px;
+}
+.special_list .special_img04{
+  background-position-x:-186px;
+}
+.special_list .special_img05{
+  background-position-x:-248px;
+}
+.special_list a{
+  text-align:center;
+  color:rgba(255,255,255,0.5);
+}
+.special_list a p{
+  font-size:12px;
+}

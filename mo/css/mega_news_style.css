@@ -1,0 +1,12 @@
+@charset 'utf-8';
+
+/* mega_news_style */
+.mega_news .img{
+  width:100%;
+  margin:10px 0;
+  border-radius:5px;
+  overflow:hidden;
+}
+.mega_news .img img{
+  width:100%;
+}

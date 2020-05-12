@@ -1,0 +1,79 @@
+@charset 'utf-8';
+
+/* main_poster_style */
+.mobile_poster .swiper-slide::after{
+  content:'바로예매';
+  display:block;
+  border-radius:5px;
+  padding:10px;
+  background-color:#55aaaa;
+  text-align:center;
+  color:white;
+  margin:10px 0 30px;
+  cursor:pointer;
+}
+.main_menu{
+  padding:40px 0 20px;
+}
+.main_menu .swiper-slide{
+  width:auto;
+}
+.main_menu .swiper-slide a{
+  color:rgba(255,255,255,0.5);
+}
+.main_menu .swiper-slide a.active{
+  color:rgba(255,255,255,1);
+  text-decoration:underline;
+}
+.mobile_poster .swiper-slide{
+  width:200px;
+}
+.mobile_poster_content{
+  position:relative;
+}
+.mobile_poster_content>a{
+  color:white;
+}
+.mobile_poster_content>a>img{
+  width:100%;
+}
+.mobile_poster_content>a>p{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:36px;
+}
+.mobile_poster_content>a>p>.age{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  padding-right:2px;
+  margin-right:6px;
+  background:green;
+  font-size:12px;
+  font-weight:100;
+  text-align:center;
+  line-height:20px;
+}
+.mobile_poster_content>ul{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  height:50px;
+  color:white;
+  text-align:center;
+}
+.mobile_poster_content>ul>li>span{
+  font-size:12px;
+  font-weight:200;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:6px;
+}
+.poster_num{
+  position:absolute;
+  left:10px;
+  top:10px;
+  font-size:24px;
+  text-shadow:2px 2px 5px black;
+  color:white;
+}

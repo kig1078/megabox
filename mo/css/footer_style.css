@@ -1,0 +1,35 @@
+@charset 'utf-8';
+
+/* footer_style */
+.footer{
+  padding:20px 0;
+  background-color:#222222;
+  color:rgba(255,255,255,0.5);
+}
+.footer_menu{
+  display:flex;
+  justify-content:center;
+  margin:10px 0;
+}
+.footer_menu li{
+  position:relative;
+  padding:0 10px;
+}
+.footer_menu li::after{
+  content:'|';
+  display:inline-block;
+  font-size:10px;
+  position: absolute;
+  right:0;
+}
+.footer_menu li:last-child::after{
+  display:none;
+}
+.footer_menu a{
+  color:white;
+}
+.footer p{
+  text-align:center;
+  line-height:21px;
+  font-size:12px;
+}

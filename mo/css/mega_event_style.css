@@ -1,0 +1,30 @@
+@charset 'utf-8';
+
+/* mega_event_style */
+.swiper-container04 .swiper-slide{
+  width:300px !important;
+  margin-bottom:30px;
+}
+.swiper-container04 .swiper-slide:first-child{
+  margin-left:16px;
+}
+.swiper-container04 .swiper-slide:last-child{
+  margin-right:16px;
+}
+.swiper-container04 .swiper-slide .img{
+  border-radius:5px;
+  overflow: hidden;
+  cursor:pointer;
+}
+.swiper-container04 .swiper-slide .img img{
+  width:100%;
+}
+.swiper-container04 .swiper-slide .event_tit{
+  color:white;
+  font-size:15px;
+  padding:10px 0;
+}
+.swiper-container04 .swiper-slide .event_date{
+  color:rgba(255,255,255,0.5);
+  font-weight:100;
+}

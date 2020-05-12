@@ -1,0 +1,81 @@
+@charset 'utf-8';
+
+/* movie_post_style */
+.movie_post h2{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+.movie_post h2::after{
+  content:'';
+  display:block;
+  width:24px;
+  height:24px;
+  margin-top:8px;
+  background-image:url('images/ico-main-spritex2.png');
+  background-size:334px 192px;
+  background-position:-1px -50px;
+  background-color:#333333;
+  border-radius:50%;
+}
+.movie_post .movie_post_txt{
+  display:flex;
+  justify-content:space-between;
+  color:rgba(255,255,255,0.5);
+  font-size:16px;
+  line-height: 24px;
+}
+.movie_post .movie_post_txt::after{
+  content:'포스트 쓰기';
+  display:block;
+  height:auto;
+  border:1px solid rgba(255,255,255,0.5);
+  border-radius:30px;
+  padding:10px;
+  color:rgba(255,255,255,0.5);
+}
+
+.movie_post .swiper-slide{
+  width:160px !important;
+}
+.movie_post .swiper-slide:first-child{
+  margin-left:16px;
+}
+.movie_post .swiper-slide:last-child{
+  margin-right:16px;
+}
+.movie_post_content{
+  width:160px;
+  border-radius:5px;
+  overflow: hidden;
+  background-color:#342235;
+}
+.movie_post_content .post_img{
+  height:100px;
+  overflow: hidden;
+  position:relative;
+}
+.movie_post_content .post_img img{
+  width:200%;
+  position: absolute;
+  left:50%;
+  top:-20%;
+  transform:translateX(-50%);
+}
+.post_txt_box{
+  height:140px;
+}
+.post_id{
+  padding:10px;
+  font-size:12px;
+  color:gray;
+}
+.post_tit{
+  padding:10px;
+  font-size:16px;
+  color:white;
+}
+.post_txt{
+  padding:10px;
+  color:rgba(255,255,255,0.5);
+}

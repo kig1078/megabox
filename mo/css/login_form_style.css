@@ -1,0 +1,89 @@
+@charset 'utf-8';
+
+/* login_form_style */
+.login_form{
+  display:none;
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  z-index:10000;
+  background:white;
+}
+.login_tit{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  background:white;
+}
+.login_tit p{
+  font-size:20px;
+  margin:0 auto;
+}
+.login_tit img{
+  width:26px;
+}
+.login_content{
+  padding-top:100px;
+}
+.id_pass{
+  width:100%;
+  margin-bottom:20px;
+  border-top:none;
+  border-right:none;
+  border-left:none;
+  padding:10px 0;
+}
+.id_pass::placeholder{
+  color:rgba(0,0,0,0.5);
+}
+.id_save{
+  display:flex;
+}
+.id_save input{
+  display:none;
+}
+.id_save label{
+  font-size:15px;
+  line-height:20px;
+  margin-left:5px;
+  color:#333;
+}
+.id_save>.check_box::before{
+  content:'';
+  display:inline-block;
+  width:20px;
+  height:20px;
+  background-image:url('images/check_icon.png');
+  background-size:cover;
+  background-position:left;
+}
+#save_id:checked~.check_box::before{
+  background-position:right;
+}
+input[value="로그인"]{
+  width:100%;
+  padding:16px;
+  margin:40px 0 20px 0;
+  font-size:18px;
+  color:white;
+  background:#6437bf;
+  border:none;
+  cursor:pointer;
+}
+.login_search, .login_sns{
+  width:70%;
+  margin:30px auto;
+  display:flex;
+  justify-content:space-between;
+}
+.login_sns>li{
+  width:40px;
+}
+.login_sns img{
+  width:100%;
+}
